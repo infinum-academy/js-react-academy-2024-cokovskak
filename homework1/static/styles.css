@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2a0066; /* Dark purple background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#page-container {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#information
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: left;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+#information > img
+{
+    width: 100%;
+    height: auto;
+    
+}
+#description {
+    text-align: left;
+    
+    background-color: white;
+    color: #1f004b;
+    padding: 10px;
+}
+#description h3 {
+    color: #1f004b; /* Light blue color */
+    margin-bottom: 10px;
+}
+#description p {
+    color: #1f004b;
+}
+#reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 20px;
+    width: 100%;
+}
+#reviews h3 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+#reviews input {
+    
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+}
+#add-review
+{
+    width: 100%;
+    height: 70px;
+    
+}
+#add-rating
+{
+    width: 90%;
+    max-width: 300px;
+    height: 50px;
+}
+#reviews button {
+    width: 10%;
+    max-width: 200px;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+
+#reviews button:hover {
+    background-color: #357ABD;
+}
+
+#reviews-list {
+    margin-top: 20px;
+    width: 100%;
+}
+
