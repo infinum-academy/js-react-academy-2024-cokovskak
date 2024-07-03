@@ -1,25 +1,44 @@
-let mockReviews = [
-    { text : "The plot is good.",
-    rating : "5"
-    },
-{
-    text : "I liked the cast",
-    rating : "5"
-},
-{
-    text : "Boring show!!",
-    rating : "3"
-},
+let mockReviews = [];
 
-];
-function renderReviewsList()
+function renderReviewsList(mockReviews)
 {
-    const reviewList = document.getElementById('reviews-list');
-    reviewList.innerHTML='';
-    mockReviews.forEach(reviewObj => {
-      reviewList.appendChild(createReviewItem(reviewObj));
+    const reviewListElement = document.getElementById('reviews-list');
+    
+    reviewListElement.innerHTML='';
+    mockReviews.forEach((reviewObj) => {
+      reviewListElement.appendChild(createReviewItem(reviewObj));
        
     });
+    renderAverageRating();
+
+ }
+function saveToLocalStorage(reviewsList)
+{
+    localStorage.setItem('reviews-list', JSON.stringify(reviewsList));
+   
+
+}
+function loadFromLocalStorage()
+{
+    const reviewListString=localStorage.getItem('reviews-list');
+    if(reviewListString)
+        {
+         mockReviews=JSON.parse(reviewListString);
+   
+            return mockReviews;
+        }
+        return [];
+}
+function calculateAverageRating()
+{
+    const total = mockReviews.reduce((sum, review) => sum + parseInt(review.rating), 0);
+    return (total/mockReviews.length).toFixed(1);
+}
+function renderAverageRating()
+{
+    const avg=calculateAverageRating();
+    const infoElement=document.getElementById('avg-rating');
+    infoElement.textContent=`${avg}/5`;
 }
 function createReviewItem(reviewObj)
 {
@@ -28,10 +47,18 @@ function createReviewItem(reviewObj)
     const reviewText = document.createElement('p');
     reviewText.textContent = reviewObj.text;
     const reviewRating = document.createElement('p');
-    reviewRating.textContent = `Rating: ${reviewObj.rating}/5`;
-
-    reviewDiv.appendChild(reviewText);
+    reviewRating.textContent = `Rating: ${reviewObj.rating}/5`;    reviewDiv.appendChild(reviewText);
     reviewDiv.appendChild(reviewRating);
+
+    const reviewDeleteButton = document.createElement('button');
+    reviewDeleteButton.textContent = 'Remove';
+    reviewDeleteButton.onclick = () => {
+    mockReviews = mockReviews.filter((t) => t !== reviewObj);
+    renderReviewsList(mockReviews);
+    saveToLocalStorage(mockReviews);
+  };
+  reviewDiv.appendChild(reviewDeleteButton);
+    
 
     return reviewDiv;
 }
@@ -52,9 +79,12 @@ const addButtonHandler= ()=>{
     
     };
     mockReviews.push(newReview);
-    renderReviewsList();
+    renderReviewsList(mockReviews);
     reviewText.value='';
     reviewRating.value='';
+    saveToLocalStorage(mockReviews);
    
 };
-renderReviewsList();
+
+mockReviews=loadFromLocalStorage();
+renderReviewsList(mockReviews);

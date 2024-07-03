@@ -121,3 +121,10 @@ h1 {
     border-radius: 15px;
     margin-bottom: 15px;
 }
+#reviews-list > div > button
+{
+    border-radius: 15px;
+    padding: 10px;
+    color: #371587;
+
+}
