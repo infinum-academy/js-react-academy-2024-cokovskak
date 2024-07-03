@@ -49,7 +49,22 @@ function createReviewItem(reviewObj)
     const reviewRating = document.createElement('p');
     reviewRating.textContent = `Rating: ${reviewObj.rating}/5`;    reviewDiv.appendChild(reviewText);
     reviewDiv.appendChild(reviewRating);
+    //stars
+    const starsContainer = document.createElement('div');
+    starsContainer.classList.add('stars-container');
 
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('span');
+        star.innerHTML = '&#9733;'; 
+        if (i <= reviewObj.rating) {
+            star.classList.add('gold');
+        }
+        starsContainer.appendChild(star);
+    }
+    reviewDiv.appendChild(starsContainer);
+
+
+    //delete button
     const reviewDeleteButton = document.createElement('button');
     reviewDeleteButton.textContent = 'Remove';
     reviewDeleteButton.onclick = () => {
@@ -81,10 +96,30 @@ const addButtonHandler= ()=>{
     mockReviews.push(newReview);
     renderReviewsList(mockReviews);
     reviewText.value='';
-    reviewRating.value='';
+    reviewRating.value='0';
+    stars.forEach(s => s.classList.remove('active'));
     saveToLocalStorage(mockReviews);
    
 };
+
+
+const stars = document.querySelectorAll('.star');
+stars.forEach(star => {
+    star.addEventListener('click', function() {
+        const ratingValue = this.getAttribute('data-value');
+
+        
+        document.getElementById('add-rating').value = ratingValue;
+
+        stars.forEach(s => {
+            if (s.getAttribute('data-value') <= ratingValue) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    });
+});
 
 mockReviews=loadFromLocalStorage();
 renderReviewsList(mockReviews);

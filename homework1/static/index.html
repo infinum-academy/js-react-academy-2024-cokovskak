@@ -21,7 +21,15 @@
         <div id="reviews">
             <h1>Reviews</h1>
             <input id="add-review" placeholder="add review">
-            <input id="add-rating"  placeholder="add rating">
+            <input id="add-rating" type="hidden"  placeholder="add rating">
+            <div id="rating-stars">
+                Rating:
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
             <button onclick="addButtonHandler()">Post </button>
 
         </div>

@@ -128,3 +128,25 @@ h1 {
     color: #371587;
 
 }
+.star {
+    font-size: 24px; /* Adjust size as needed */
+    cursor: pointer;
+    color: gray; /* Default color */
+}
+
+.star:hover,
+.star.active {
+    color: gold; /* Color when hovered or selected */
+}
+.stars-container {
+    margin-top: 5px;
+}
+
+.stars-container span {
+    font-size: 20px;
+    color: gray; /* Default star color */
+}
+
+.stars-container span.gold {
+    color: gold; /* Golden star color */
+}
