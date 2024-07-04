@@ -12,12 +12,14 @@ function renderReviewsList(mockReviews)
     renderAverageRating();
 
  }
+//saves the list of reviews to browser's local storage
 function saveToLocalStorage(reviewsList)
 {
     localStorage.setItem('reviews-list', JSON.stringify(reviewsList));
    
 
 }
+//loads the saved list
 function loadFromLocalStorage()
 {
     const reviewListString=localStorage.getItem('reviews-list');
@@ -29,17 +31,20 @@ function loadFromLocalStorage()
         }
         return [];
 }
+//calculates the average rating by summing up the ratings and dividing it by the number of reviews
 function calculateAverageRating()
 {
     const total = mockReviews.reduce((sum, review) => sum + parseInt(review.rating), 0);
     return (total/mockReviews.length).toFixed(1);
 }
+//updates the average rating displayed on the page.
 function renderAverageRating()
 {
     const avg=calculateAverageRating();
     const infoElement=document.getElementById('avg-rating');
     infoElement.textContent=`${avg}/5`;
 }
+//creates a DOM element that represents a review
 function createReviewItem(reviewObj)
 {
     const reviewDiv = document.createElement('div');
@@ -47,9 +52,10 @@ function createReviewItem(reviewObj)
     const reviewText = document.createElement('p');
     reviewText.textContent = reviewObj.text;
     const reviewRating = document.createElement('p');
-    reviewRating.textContent = `Rating: ${reviewObj.rating}/5`;    reviewDiv.appendChild(reviewText);
+    reviewRating.textContent = `Rating: ${reviewObj.rating}/5`;    
+    reviewDiv.appendChild(reviewText);
     reviewDiv.appendChild(reviewRating);
-    //stars
+    //stars added
     const starsContainer = document.createElement('div');
     starsContainer.classList.add('stars-container');
 
@@ -63,8 +69,8 @@ function createReviewItem(reviewObj)
     }
     reviewDiv.appendChild(starsContainer);
 
-
-    //delete button
+ 
+    //delete button added
     const reviewDeleteButton = document.createElement('button');
     reviewDeleteButton.textContent = 'Remove';
     reviewDeleteButton.onclick = () => {
@@ -77,6 +83,7 @@ function createReviewItem(reviewObj)
 
     return reviewDiv;
 }
+//handles the addition of a new review with the button post
 const addButtonHandler= ()=>{
     const reviewText=document.getElementById('add-review');
     const newReviewText=reviewText.value;
@@ -102,7 +109,7 @@ const addButtonHandler= ()=>{
    
 };
 
-
+// click event listener to all elements with the class star
 const stars = document.querySelectorAll('.star');
 stars.forEach(star => {
     star.addEventListener('click', function() {
@@ -110,7 +117,7 @@ stars.forEach(star => {
 
         
         document.getElementById('add-rating').value = ratingValue;
-
+        
         stars.forEach(s => {
             if (s.getAttribute('data-value') <= ratingValue) {
                 s.classList.add('active');
