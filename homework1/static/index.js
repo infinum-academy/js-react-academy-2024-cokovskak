@@ -35,6 +35,8 @@ function loadFromLocalStorage()
 function calculateAverageRating()
 {
     const total = mockReviews.reduce((sum, review) => sum + parseInt(review.rating), 0);
+    if(mockReviews.length==0)
+        return 0;
     return (total/mockReviews.length).toFixed(1);
 }
 //updates the average rating displayed on the page.
@@ -89,7 +91,7 @@ const addButtonHandler= ()=>{
     const newReviewText=reviewText.value;
     const reviewRating=document.getElementById('add-rating');
     const newReviewRating=reviewRating.value;
-    if(!newReviewText)
+    if(!newReviewText || !newReviewRating)
         {
             return;
         }
