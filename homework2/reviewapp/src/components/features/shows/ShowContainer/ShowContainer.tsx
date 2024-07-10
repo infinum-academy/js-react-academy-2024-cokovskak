@@ -1,8 +1,8 @@
-import { IReview, IReviewList } from "@/app/typings/review"
+import { IReview, IReviewList } from "@/typings/review"
 import { Flex } from "@chakra-ui/react";
 import { Fragment, useState, useEffect } from "react";
 import { ShowDetails } from "../ShowDetails/ShowDetails";
-import { IShow } from "@/app/typings/show";
+import { IShow } from "@/typings/show";
 import { ShowReviewSection } from "../ShowReviewSection/ShowReviewSection";
 const mockShow : IShow = {
     title: 'Brooklyn99',

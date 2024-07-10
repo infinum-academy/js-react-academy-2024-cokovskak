@@ -1,4 +1,4 @@
-import { IShow } from "@/app/typings/show";
+import { IShow } from "@/typings/show";
 import { Card, CardBody, Flex,  Heading,  Image, Text} from "@chakra-ui/react";
 
 export interface IShowItemProps{
@@ -9,8 +9,8 @@ export const ShowDetails=({show}: IShowItemProps) =>
 {
 
     return (
-        <Flex flexDirection="column" width="100%" borderRadius="15px"   paddingBottom={5} gap={5} marginBottom={4}   height="fit-content">
-            <Card>
+        
+            <Card marginBottom={5}>
                <Image   alt=" " src={ show.imageUrl ? show.imageUrl: 'https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/bk99/brooklyn-99-social.jpg/_jcr_content/renditions/original.JPEG'}/>
                 <CardBody>
                     <Heading size="md" padding={3}>{show.title}</Heading>
@@ -22,6 +22,6 @@ export const ShowDetails=({show}: IShowItemProps) =>
 
 
             
-        </Flex>
+        
     );
 };

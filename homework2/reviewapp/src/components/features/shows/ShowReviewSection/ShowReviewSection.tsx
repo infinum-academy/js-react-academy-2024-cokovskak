@@ -1,5 +1,5 @@
 
-import { IReview, IReviewList } from "@/app/typings/review";
+import { IReview, IReviewList } from "@/typings/review";
 import { IReviewFormProps, ReviewForm } from "../ReviewForm/ReviewForm";
 import { Fragment } from "react";
 import { Heading } from "@chakra-ui/react";
