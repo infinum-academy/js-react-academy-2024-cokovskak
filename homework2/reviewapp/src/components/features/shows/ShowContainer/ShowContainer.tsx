@@ -12,13 +12,42 @@ import { getShow } from "@/fetchers/shows";
 const mockReviews:IReviewList={
     reviews: [],
 };
+const mockShow: IShow = {
+	id: '',
+	image_url: '',
+	title: '',
+	description: '',
+	average_rating: 0,
+	no_of_reviews: 0,
+};
+
 export const ShowContainer=()=>{
     const params = useParams();
     const [reviewList, setReviewList] = useState(mockReviews);
     const [averageRating, setAverageRating] = useState(0);
     const { data, isLoading, error } = useSWR(`/shows/${params.id}`, () => getShow(params.id as string));
 
-    // const [show, setShow] = useState(data);
+     const [show, setShow] = useState(mockShow);
+    const loadFromLocalStorage=(id:string)=>
+        {
+            const reviewListString=localStorage.getItem(`reviewsList-${id}`);
+            if(!reviewListString)
+            {
+                return reviewList;
+             }
+            return JSON.parse(reviewListString);
+        };
+     useEffect(()=>{
+    
+            const storedList=loadFromLocalStorage(params.id as string);
+            if(data)
+                {
+                    const sh={...data,averageRating:calculateRating(storedList)};
+                    setShow(sh);
+                }
+                setReviewList(storedList);
+                
+            },[data]);
 
 	if (error) {
 		return <WarningIcon boxSize={100} mx="50%" />;
@@ -27,20 +56,10 @@ export const ShowContainer=()=>{
 	if (isLoading || !data) {
 		return <Spinner thickness="8px" emptyColor="white" color="darkblue" boxSize={100} mx="50%"></Spinner>;
 	}
-
-   
-    // useEffect(() => {
-    //     setShow((prevShow) => ({
-    //       ...prevShow,
-    //       averageRating: averageRating
-    //     }));
-    //   }, [averageRating]);
-    // useEffect(()=>{
-
-    //     const storedList=loadFromLocalStorage();
-    //     setReviewList(storedList);
-    //     setAverageRating(calculateRating(storedList));
-    // },[]);
+    const saveToLocalStorage=(reviewList:IReviewList, id:string)=>
+        {
+            localStorage.setItem(`reviewsList-${id}`,JSON.stringify(reviewList));
+        }
 
     const onAddReview=(review:IReview)=>{
     const newList={
@@ -48,7 +67,7 @@ export const ShowContainer=()=>{
     };
     setReviewList(newList);
     setAverageRating(calculateRating(newList));
-    saveToLocalStorage(newList);
+    saveToLocalStorage(newList,params.id as string);
     
    };
 
@@ -68,22 +87,10 @@ export const ShowContainer=()=>{
     };
     setReviewList(newList);
     setAverageRating(calculateRating(newList));
-    saveToLocalStorage(newList);
+    saveToLocalStorage(newList,params.id as string);
 
    };
-   const loadFromLocalStorage=()=>
-    {
-        const reviewListString=localStorage.getItem('reviewsList');
-        if(!reviewListString)
-        {
-            return mockReviews;
-         }
-        return JSON.parse(reviewListString);
-    };
-    const saveToLocalStorage=(reviewList:IReviewList)=>
-        {
-            localStorage.setItem('reviewsList',JSON.stringify(reviewList));
-        }
+   
    return(
     <Fragment>
         <Flex flexDirection="column"  alignItems="center" >

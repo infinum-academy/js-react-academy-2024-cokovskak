@@ -11,11 +11,11 @@ export const ShowCard=({show}:IShowCardProps)=>{
   return (
 
     <Card  as={NextLink}
-    href={`/all-shows/${show.id}`} overflow="hidden" >
+    href={`/all-shows/${show.id}`}  maxW="2xs" borderRadius="20px" overflow="hidden">
          <Image alt={show.title} borderTopRadius="20px" src = {show.image_url ? show.image_url : '/images/noImage.jpeg'} data-testid = "image" />
             
             <CardBody color="darkblue">
-               <Text fontWeight="bold" fontSize={1.5} marginBottom={1} data-testid = "title"> {show.title} </Text>
+               <Text fontWeight="bold"  marginBottom={4} data-testid = "title"> {show.title} </Text>
                <Flex alignContent="center" alignItems="center">
                   <StarIcon alignContent="center" color="darkblue" marginRight="8px" />
                   <Text flexGrow={1} data-testid="rating">{show.average_rating ? `${show.average_rating} / 5` : 'No ratings'}</Text>
