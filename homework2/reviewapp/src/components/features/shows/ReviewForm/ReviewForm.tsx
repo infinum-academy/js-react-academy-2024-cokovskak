@@ -1,5 +1,5 @@
-import StarsRating from "@/components/shared/StarsRating/StarsRating";
-import StarIconComponent from "@/components/shared/StarsRating/StarsRating";
+import { StarsRating } from "@/components/shared/StarsRating/StarsRating";
+
 import { IReview } from "@/typings/review";
 import { Box, Button, Flex, Input } from "@chakra-ui/react";
 import { useState } from "react";
@@ -14,7 +14,7 @@ export const ReviewForm=({onAddReview}:IReviewFormProps) =>
 
        const handleRatingChange = (selectedRating: number) => {
         setRating(selectedRating); };
-        const onClickHandler=()=>
+        const onSubmit=()=>
             {
                 const reviewInputComment= document.getElementById('comment-input') as HTMLInputElement;
                 const commentValue=reviewInputComment.value;
@@ -32,13 +32,13 @@ export const ReviewForm=({onAddReview}:IReviewFormProps) =>
 
             };
         return (
-            <Flex gap={3}  textColor="grey"   direction={'column'} >
+            <Flex as="form" onSubmit={onSubmit} gap={3}  textColor="grey"   direction={'column'} >
                 <Input marginBottom={5} height={100} borderRadius={10} bg="white" id="comment-input" placeholder="Add review.."></Input>
                     <Flex direction={'row'}>{Array(5).fill('').map((_, index) => (<StarsRating key={index} selected={index < rating}  onChange={() => handleRatingChange(index + 1)}/>  ))}
                     </Flex>
                
                     
-                <Button  flexDirection="column" marginBottom={5} height={50} borderRadius={30} width={100} marginTop={5} bg="white" onClick={onClickHandler}>Post</Button>
+                <Button type="submit" flexDirection="column" marginBottom={5} height={50} borderRadius={30} width={100} marginTop={5} bg="white">Post</Button>
             </Flex>
           
         );

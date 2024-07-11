@@ -1,35 +1,46 @@
 import { IReview, IReviewList } from "@/typings/review"
-import { Flex } from "@chakra-ui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import { Fragment, useState, useEffect } from "react";
 import { ShowDetails } from "../ShowDetails/ShowDetails";
 import { IShow } from "@/typings/show";
 import { ShowReviewSection } from "../ShowReviewSection/ShowReviewSection";
-const mockShow : IShow = {
-    title: 'Brooklyn99',
-    description: `Comedy series following the exploits of Det. Jake Peralta and his diverse, 
-                 lovable colleagues as they police the NYPD's 99th Precinct.`,
-    imageUrl: 'https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/bk99/brooklyn-99-social.jpg/_jcr_content/renditions/original.JPEG',
-    averageRating: 0
-  };
+import { useParams } from 'next/navigation';
+import useSWR from "swr";
+import { WarningIcon } from "@chakra-ui/icons";
+import { getShow } from "@/fetchers/shows";
+
 const mockReviews:IReviewList={
     reviews: [],
 };
 export const ShowContainer=()=>{
+    const params = useParams();
     const [reviewList, setReviewList] = useState(mockReviews);
     const [averageRating, setAverageRating] = useState(0);
-    const [show, setShow] = useState(mockShow);
-    useEffect(() => {
-        setShow((prevShow) => ({
-          ...prevShow,
-          averageRating: averageRating
-        }));
-      }, [averageRating]);
-    useEffect(()=>{
+    const { data, isLoading, error } = useSWR(`/shows/${params.id}`, () => getShow(params.id as string));
 
-        const storedList=loadFromLocalStorage();
-        setReviewList(storedList);
-        setAverageRating(calculateRating(storedList));
-    },[]);
+    // const [show, setShow] = useState(data);
+
+	if (error) {
+		return <WarningIcon boxSize={100} mx="50%" />;
+	}
+
+	if (isLoading || !data) {
+		return <Spinner thickness="8px" emptyColor="white" color="darkblue" boxSize={100} mx="50%"></Spinner>;
+	}
+
+   
+    // useEffect(() => {
+    //     setShow((prevShow) => ({
+    //       ...prevShow,
+    //       averageRating: averageRating
+    //     }));
+    //   }, [averageRating]);
+    // useEffect(()=>{
+
+    //     const storedList=loadFromLocalStorage();
+    //     setReviewList(storedList);
+    //     setAverageRating(calculateRating(storedList));
+    // },[]);
 
     const onAddReview=(review:IReview)=>{
     const newList={
@@ -77,7 +88,7 @@ export const ShowContainer=()=>{
     <Fragment>
         <Flex flexDirection="column"  alignItems="center" >
             <Flex flexDirection="column">
-                <ShowDetails show={show} />
+                <ShowDetails show={data} />
                 <ShowReviewSection reviewList={reviewList} addReview={onAddReview} deleteReview={onDeleteReview}/>
             </Flex>
         </Flex>
