@@ -1,45 +1,56 @@
 
 import StarsRatingInput from "@/components/shared/StarsRating/StarsRatingInput";
+import { authFetcher } from "@/fetchers/fetcher";
+import { swrKeys } from "@/fetchers/swrKeys";
 import { IReview } from "@/typings/review";
-import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, Input, chakra } from "@chakra-ui/react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import useSWR from "swr";
 
 export interface IReviewFormProps
 {
     onAddReview:(review:IReview)=>void;
 }
+export interface IReviewFormInput{
+    comment:string
+}
 export const ReviewForm=({onAddReview}:IReviewFormProps) =>
     {
         const [rating, setRating] = useState(0);
-
+        const {data} = useSWR<{user: {email: string}}>(swrKeys.user, authFetcher);
+        const {register, handleSubmit, reset, formState: {isSubmitting}} = useForm<IReviewFormInput>();
        const handleRatingChange = (selectedRating: number) => {
         setRating(selectedRating); };
-        const onSubmit=()=>
+        const addReview=async({comment}:IReviewFormInput)=>
             {
-                const reviewInputComment= document.getElementById('comment-input') as HTMLInputElement;
-                const commentValue=reviewInputComment.value;
-                if( rating==0 || commentValue==='')
+                if( rating==0 || comment==='')
                     return;
                 const newReview:IReview={
-                    comment: commentValue,
-                    rating: rating
+                    comment: comment,
+                    rating: rating,
+                    email: data?.user.email
 
                 };
                 onAddReview(newReview);
-                reviewInputComment.value="";
+                reset();
                 setRating(0);
 
 
             };
         return (
-            <Flex as="form" onSubmit={onSubmit} gap={3}  textColor="grey"   direction={'column'} >
-                <Input  data-testid="review-input" marginBottom={5} height={100} borderRadius={10} bg="white" id="comment-input" placeholder="Add review.."></Input>
+
+            <chakra.form onSubmit={handleSubmit(addReview)}>               
+                <FormControl          isDisabled={isSubmitting} >
+                <Input textColor="black" {...register("comment")} data-testid="review-input" marginBottom={5} height={100} borderRadius={10} bg="white" id="comment-input" placeholder="Add review.."></Input>
+
                 <Flex alignItems={'center'} marginBottom={1} data-testid="review-rating">
-                <StarsRatingInput   value={rating} onChange={handleRatingChange}/>              
+                     <StarsRatingInput   value={rating} onChange={handleRatingChange}/>              
                 </Flex>
-                    
-                <Button data-testid="review-button" type="submit" flexDirection="column" marginBottom={5} height={50} borderRadius={30} width={100} marginTop={5} bg="white">Post</Button>
-            </Flex>
+                </FormControl>
+                <Button   isDisabled={isSubmitting} data-testid="review-button" type="submit" flexDirection="column" marginBottom={5} height={50} borderRadius={30} width={100} marginTop={5} bg="white">Post</Button>
+            </chakra.form>
+            
           
         );
     }

@@ -15,7 +15,7 @@ interface ILoginFormInput {
     password: string
  }
  export const LoginForm=()=>{
-    const {register, handleSubmit, setError, formState: {isSubmitting, errors}} = useForm<ILoginFormInput>();
+    const {register, handleSubmit, formState: {isSubmitting, errors}} = useForm<ILoginFormInput>();
     const {mutate} = useSWR(swrKeys.user);
     
     const {trigger} = useSWRMutation(swrKeys.login, mutator, {
