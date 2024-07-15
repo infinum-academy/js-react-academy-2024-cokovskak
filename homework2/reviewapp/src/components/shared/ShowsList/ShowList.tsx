@@ -11,7 +11,7 @@ interface IShowListProps {
   
 export const ShowList=({showList}:IShowListProps)=>{
     return (
-        <SimpleGrid columns={4} padding={4} gap={4}>
+        <SimpleGrid data-testid="list" columns={4} padding={4} gap={4}>
 			{showList.map((show) => (
 				<ShowCard key={show.id} show={show}></ShowCard>
 			))}

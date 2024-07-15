@@ -94,7 +94,7 @@ export const ShowContainer=()=>{
    return(
     <Fragment>
         <Flex flexDirection="column"  alignItems="center" >
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" maxWidth="80%">
                 <ShowDetails show={data} />
                 <ShowReviewSection reviewList={reviewList} addReview={onAddReview} deleteReview={onDeleteReview}/>
             </Flex>

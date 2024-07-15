@@ -1,6 +1,6 @@
 "use client";
 
-import { TopRated } from "@/components/features/shows/TopRated/TopRated";
+import { TopRated } from "@/components/features/shows/TopRatedSection/TopRatedSection";
 
 
 export default function TopRatedPage() {
