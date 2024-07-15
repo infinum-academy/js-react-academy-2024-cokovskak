@@ -22,7 +22,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers> 
           
-        
         <Flex  
             textColor="white"
             bg="#2a0066">
