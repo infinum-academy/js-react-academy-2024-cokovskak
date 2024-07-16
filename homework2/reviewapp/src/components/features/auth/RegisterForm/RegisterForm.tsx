@@ -54,7 +54,7 @@ export const  RegisterForm=()=> {
        ...passwordRequirements,
        validate: {
           equals: (value: string) => {
-             return watch("password") == value || 'Make sure passwords are equal';
+             return watch("password") == value || 'Make sure passwords are the same';
           }
        }
     }

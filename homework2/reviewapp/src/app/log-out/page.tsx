@@ -20,5 +20,5 @@ export default function Logout(){
     mutate(undefined, {"revalidate": false});
   }, [data, isLoading, mutate]);
 
-  return <AuthRedirect to="/login" condition={"isLoggedIn"} />;
+  return <AuthRedirect to="/login" isLogged={true} />;
 }

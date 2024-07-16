@@ -6,26 +6,26 @@ import { useEffect } from "react";
 import useSWR, { mutate } from "swr";
 interface IAuthRedirect {
     to: string,
-    condition: 'isLoggedIn' | 'isLoggedOut'
+    isLogged: boolean
  }
  
- export const AuthRedirect =({to, condition} :  IAuthRedirect)=>
+ export const AuthRedirect =({to, isLogged} :  IAuthRedirect)=>
  {
     const route = useRouter();
     const {data, isLoading} = useSWR(swrKeys.user, authFetcher);
     console.log("auth redirect");
     useEffect(() => {
        if (isLoading) return;
-       console.log(data, condition);
-       if (!data && condition == 'isLoggedOut') {
+       console.log(data, isLogged);
+       if (!data && isLogged == false) {
           route.push(to);
        }
  
-       if (data && condition == 'isLoggedIn') { 
+       if (data && isLogged == true) { 
           route.push(to);
        }
  
-    }, [data, isLoading, to, condition, route]);
+    }, [data, isLoading, to, isLogged, route]);
  
     return null;
  }

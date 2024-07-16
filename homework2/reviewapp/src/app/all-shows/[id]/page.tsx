@@ -1,8 +1,16 @@
 'use client';
 
 import { ShowContainer } from "@/components/features/shows/ShowContainer/ShowContainer";
+import { AuthRedirect } from "@/components/shared/AuthRedirect/AuthRedirect";
 
 export default function ShowCardPage()
 {
-    return <ShowContainer/>
+
+    return (                
+        <>
+         {/* <AuthRedirect to="/login" condition="isLoggedOut"/> */}
+     <ShowContainer/> 
+        </>
+
+   );
 }

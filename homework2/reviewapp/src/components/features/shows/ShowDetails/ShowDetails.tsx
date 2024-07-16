@@ -11,7 +11,7 @@ export const ShowDetails=({show}: IShowItemProps) =>
     return (
         
             <Card marginBottom={5}  marginTop="20px">
-               <Image maxHeight="600px"   alt={show.title} src={ show.image_url ? show.image_url: 'homework2/reviewapp/src/components/images/noImage.jpg'}/>
+               <Image maxHeight="600px"   alt={show.title} src={ show.image_url ? show.image_url: 'public/assets/images/noImage.jpg'}/>
                 <CardBody>
                     <Heading size="md" padding={3}>{show.title}</Heading>
                     <Text padding={3}>{show.description}</Text>

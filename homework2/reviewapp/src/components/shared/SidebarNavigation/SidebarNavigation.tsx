@@ -19,7 +19,7 @@ return (
       <Text color="white"  background={pathname === "/all-shows" ? "rgba(255, 255, 255, 0.2)" : "transparent"} as={NextLink} href={`/all-shows`}>
         All shows
       </Text>
-      <Text color="white"  background={pathname === "/top-rated" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/top-rated`}>
+      <Text color="white"  background={pathname === "/all-shows/top-rated" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/all-shows/top-rated`}>
         Top rated
       </Text>
       <Text color="white"  background={pathname === "/my-profile" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/my-profile`}>
