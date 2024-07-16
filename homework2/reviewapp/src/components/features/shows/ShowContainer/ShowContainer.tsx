@@ -8,6 +8,8 @@ import { useParams } from 'next/navigation';
 import useSWR from "swr";
 import { WarningIcon } from "@chakra-ui/icons";
 import { getShow } from "@/fetchers/shows";
+import { swrKeys } from "@/fetchers/swrKeys";
+import { authFetcher, fetcher } from "@/fetchers/fetcher";
 
 const mockReviews:IReviewList={
     reviews: [],
@@ -20,14 +22,17 @@ const mockShow: IShow = {
 	average_rating: 0,
 	no_of_reviews: 0,
 };
+export interface IShowResponse{
+    show:IShow;
+}
 
 export const ShowContainer=()=>{
     const params = useParams();
     const [reviewList, setReviewList] = useState(mockReviews);
     const [averageRating, setAverageRating] = useState(0);
-    const { data, isLoading, error } = useSWR(`/shows/${params.id}`, () => getShow(params.id as string));
+    const { data, isLoading, error } = useSWR<IShowResponse>(swrKeys.show(params.id as string), authFetcher);
+    //useSWR(`/shows/${params.id}`, () => getShow(params.id as string));
 
-     const [show, setShow] = useState(mockShow);
     const loadFromLocalStorage=(id:string)=>
         {
             const reviewListString=localStorage.getItem(`reviewsList-${id}`);
@@ -40,12 +45,11 @@ export const ShowContainer=()=>{
      useEffect(()=>{
     
             const storedList=loadFromLocalStorage(params.id as string);
-            if(data)
+            if(storedList)
                 {
-                    const sh={...data,averageRating:calculateRating(storedList)};
-                    setShow(sh);
+                    setReviewList(storedList);
                 }
-                setReviewList(storedList);
+              
                 
             },[data]);
 
@@ -95,7 +99,7 @@ export const ShowContainer=()=>{
     <Fragment>
         <Flex flexDirection="column"  alignItems="center" >
             <Flex flexDirection="column" maxWidth="80%">
-                <ShowDetails show={data} />
+                <ShowDetails show={data.show} />
                 <ShowReviewSection reviewList={reviewList} addReview={onAddReview} deleteReview={onDeleteReview}/>
             </Flex>
         </Flex>

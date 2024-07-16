@@ -6,5 +6,5 @@ export const swrKeys = {
   register: () => `${API_URL}/users/`,
   all_shows: () => `${API_URL}/shows`,
   top_rated: () => `${API_URL}/shows/top_rated`,
-  show: (id: number) => `${API_URL}/shows/${id}`
+  show: (id: string) => `${API_URL}/shows/${id}`
 };
