@@ -1,0 +1,8 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2a0066;
+  padding: 6rem;
+  min-height: 100vh;
+}

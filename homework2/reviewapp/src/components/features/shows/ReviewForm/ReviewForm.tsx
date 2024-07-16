@@ -1,0 +1,44 @@
+
+import StarsRatingInput from "@/components/shared/StarsRating/StarsRatingInput";
+import { IReview } from "@/typings/review";
+import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import { useState } from "react";
+
+export interface IReviewFormProps
+{
+    onAddReview:(review:IReview)=>void;
+}
+export const ReviewForm=({onAddReview}:IReviewFormProps) =>
+    {
+        const [rating, setRating] = useState(0);
+
+       const handleRatingChange = (selectedRating: number) => {
+        setRating(selectedRating); };
+        const onSubmit=()=>
+            {
+                const reviewInputComment= document.getElementById('comment-input') as HTMLInputElement;
+                const commentValue=reviewInputComment.value;
+                if( rating==0 || commentValue==='')
+                    return;
+                const newReview:IReview={
+                    comment: commentValue,
+                    rating: rating
+
+                };
+                onAddReview(newReview);
+                reviewInputComment.value="";
+                setRating(0);
+
+
+            };
+        return (
+            <Flex as="form" onSubmit={onSubmit} gap={3}  textColor="grey"   direction={'column'} >
+                <Input marginBottom={5} height={100} borderRadius={10} bg="white" id="comment-input" placeholder="Add review.."></Input>
+                <StarsRatingInput value={rating} onChange={handleRatingChange}/>
+               
+                    
+                <Button type="submit" flexDirection="column" marginBottom={5} height={50} borderRadius={30} width={100} marginTop={5} bg="white" >Post</Button>
+            </Flex>
+          
+        );
+    }
