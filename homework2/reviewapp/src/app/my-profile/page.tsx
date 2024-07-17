@@ -26,7 +26,7 @@ export default function MyProfile() {
             <Text>Email:
             {data?.user?.email}
             </Text>
-            <Image src= {data?.user.image_url ? data?.user.image_url:'/reviewapp/public/assets/images/noImage.jpg'} alt="Avatar" width="100px" height="100px"></Image>
+            <Image  src= {data?.user.image_url ? data?.user.image_url:'/assets/images/noImage.jpg'} alt="Avatar" width="300px" height="300px"></Image>
       </Flex>
     
 

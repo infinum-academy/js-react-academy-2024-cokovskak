@@ -3,9 +3,13 @@ import { swrKeys } from "@/fetchers/swrKeys";
 import { Flex,Heading,Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 export const SidebarNavigation=()=>{
   const pathname=usePathname();
+  const onLogout=()=>{
+    localStorage.removeItem('loginInfo');
+    mutate(swrKeys.user,null,{revalidate: false});
+  }
 return (
     <Flex bg="#2a0066" flexDirection="column" 
     gap={4} width="20vw" color="white" height="auto"
@@ -25,7 +29,7 @@ return (
       <Text color="white"  background={pathname === "/my-profile" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/my-profile`}>
         My profile
       </Text>
-      <Text color="white" background={pathname === "/log-out" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/log-out`} marginTop="auto" fontSize="medium">
+      <Text color="white" onClick={onLogout} background={pathname === "/log-out" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  marginTop="auto" fontSize="medium">
         Log out
       </Text>
     </Flex>

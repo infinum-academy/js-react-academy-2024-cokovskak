@@ -8,8 +8,8 @@ export default function ShowCardPage()
 
     return (                
         <>
-         {/* <AuthRedirect to="/login" condition="isLoggedOut"/> */}
-     <ShowContainer/> 
+         <AuthRedirect to="/login" isLogged={false}/>
+         <ShowContainer/> 
         </>
 
    );

@@ -12,11 +12,11 @@ export async function mutator<T>(url : string, { arg }: { arg: T }) {
        const error = await response.json()
        throw error;
      }
-     const obj = await response.json();
-     return {
-       ...obj,
+     const loginInfo={
        'uid': response.headers.get('uid'),
        'client': response.headers.get('client'),
        'token': response.headers.get('access-token')
      }
+     localStorage.setItem('loginInfo',JSON.stringify(loginInfo));
+     return await response.json();
   }
