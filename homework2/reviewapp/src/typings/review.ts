@@ -5,7 +5,7 @@ export interface IReview{
     rating: number;
     comment: string;
     user?:IUser;
-    show: number;
+    show_id: number;
 }
 export interface IReviewList
 {

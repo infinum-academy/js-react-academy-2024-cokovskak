@@ -27,7 +27,7 @@ export const ReviewForm = ({ onAddReview,index }: IReviewFormProps) => {
 	const addReview = async ({ comment }: IReviewFormInput) => {
 		if (!data) return;
 		const newReview: IReview = {
-			show: index,
+			show_id: index,
 			comment: comment,
 			rating: rating,
 		};

@@ -13,7 +13,7 @@ export interface IReviewDeleteButton{
 export const ReviewDeleteButton=({review}:IReviewDeleteButton)=>{
     const{trigger}=useSWRMutation(swrKeys.reviews(`/${review.id}`),deleteReview,{
         onSuccess:()=>{
-            mutate(swrKeys.review(review.show))
+            mutate(swrKeys.review(review.show_id))
         }
     });
     const dltReview=async()=>{
