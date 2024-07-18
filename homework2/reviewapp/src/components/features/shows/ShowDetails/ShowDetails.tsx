@@ -10,7 +10,7 @@ export const ShowDetails = ({ show }: IShowItemProps) => {
 			<Image
 				maxHeight="600px"
 				alt={show.title}
-				src={show.image_url ? show.image_url : 'homework2/reviewapp/src/components/images/noImage.jpg'}
+				src={show.image_url ? show.image_url : 'public/assets/images/noImage.jpg'}
 			/>
 			<CardBody>
 				<Heading size="md" padding={3}>

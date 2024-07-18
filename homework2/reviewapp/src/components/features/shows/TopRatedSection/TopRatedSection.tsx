@@ -4,10 +4,12 @@ import { ShowList } from "@/components/shared/ShowsList/ShowList";
 import { WarningIcon } from "@chakra-ui/icons";
 import { Flex, Spinner } from "@chakra-ui/react";
 import useSWR from "swr";
-import { getTopRatedShowsList } from '@/fetchers/shows';
+import { IListShows, getTopRatedShowsList } from '@/fetchers/shows';
+import { swrKeys } from "@/fetchers/swrKeys";
+import { authFetcher, fetcher } from "@/fetchers/fetcher";
 
 export const TopRated=()=>{
-    const { data, isLoading, error } = useSWR('/shows/top-rated', getTopRatedShowsList);
+    const { data, isLoading, error } = useSWR<IListShows>(swrKeys.top_rated,authFetcher);
 
 	if (error) {
 		return <WarningIcon boxSize={100} mx="50%" />;
