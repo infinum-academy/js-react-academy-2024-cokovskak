@@ -1,3 +1,6 @@
+import { IReview } from "@/typings/review";
+import { authFetcher } from "./fetcher";
+
 export async function mutator<T>(url : string, { arg }: { arg: T }) {
     const response = await fetch(url, {
       method: 'POST',
@@ -20,3 +23,4 @@ export async function mutator<T>(url : string, { arg }: { arg: T }) {
      localStorage.setItem('loginInfo',JSON.stringify(loginInfo));
      return await response.json();
   }
+ 

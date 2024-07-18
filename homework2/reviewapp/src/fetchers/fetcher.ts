@@ -13,6 +13,7 @@ export async function fetcher <T> (input: string | URL | globalThis.Request, ini
  }
 
 export async function authFetcher <T> (input: string | URL | globalThis.Request, init?: RequestInit) : Promise<T> {
+  let data;
    try {
       const value = localStorage.getItem('loginInfo');
       const authInfo = value ? JSON.parse(value) : {};
@@ -26,13 +27,15 @@ export async function authFetcher <T> (input: string | URL | globalThis.Request,
          }
       });
       console.log(response);
-      if (!response.ok) {
-         throw new Error(`Response status: ${response.status}`);
-      }
-      return await response.json();
-   } catch (error) {
       
-      throw new Error(`Response status: ${error}`)
+      if (!response.ok) {
+         throw response;
+      }
+      if (response.status !== 204) {
+          data = await response.json();
+      }
+   } catch (error) {
+      throw error;
    }
-    
+   return data;
 }

@@ -27,31 +27,31 @@ export interface IShowResponse{
 }
 
 export const ShowContainer=()=>{
-    const params = useParams();
+    let params = useParams();
     const [reviewList, setReviewList] = useState(mockReviews);
     const [averageRating, setAverageRating] = useState(0);
     const { data, isLoading, error } = useSWR<IShowResponse>(swrKeys.show(params.id as string), authFetcher);
     //useSWR(`/shows/${params.id}`, () => getShow(params.id as string));
 
-    const loadFromLocalStorage=(id:string)=>
-        {
-            const reviewListString=localStorage.getItem(`reviewsList-${id}`);
-            if(!reviewListString)
-            {
-                return reviewList;
-             }
-            return JSON.parse(reviewListString);
-        };
-     useEffect(()=>{
+    // const loadFromLocalStorage=(id:string)=>
+    //     {
+    //         const reviewListString=localStorage.getItem(`reviewsList-${id}`);
+    //         if(!reviewListString)
+    //         {
+    //             return reviewList;
+    //          }
+    //         return JSON.parse(reviewListString);
+    //     };
+    //  useEffect(()=>{
     
-            const storedList=loadFromLocalStorage(params.id as string);
-            if(storedList)
-                {
-                    setReviewList(storedList);
-                }
+    //         const storedList=loadFromLocalStorage(params.id as string);
+    //         if(storedList)
+    //             {
+    //                 setReviewList(storedList);
+    //             }
               
                 
-            },[data]);
+    //         },[data]);
 
 	if (error) {
 		return <WarningIcon boxSize={100} mx="50%" />;
@@ -60,47 +60,47 @@ export const ShowContainer=()=>{
 	if (isLoading || !data) {
 		return <Spinner thickness="8px" emptyColor="white" color="darkblue" boxSize={100} mx="50%"></Spinner>;
 	}
-    const saveToLocalStorage=(reviewList:IReviewList, id:string)=>
-        {
-            localStorage.setItem(`reviewsList-${id}`,JSON.stringify(reviewList));
-        }
+    // const saveToLocalStorage=(reviewList:IReviewList, id:string)=>
+    //     {
+    //         localStorage.setItem(`reviewsList-${id}`,JSON.stringify(reviewList));
+    //     }
 
-    const onAddReview=(review:IReview)=>{
-    const newList={
-        reviews:[...reviewList.reviews,review]
-    };
-    setReviewList(newList);
-    setAverageRating(calculateRating(newList));
-    saveToLocalStorage(newList,params.id as string);
+//     const onAddReview=(review:IReview)=>{
+//     const newList={
+//         reviews:[...reviewList.reviews,review]
+//     };
+//     setReviewList(newList);
+//     setAverageRating(calculateRating(newList));
+//     saveToLocalStorage(newList,params.id as string);
     
-   };
+//    };
 
-    const calculateRating=(reviewList:IReviewList)=>{
+//     const calculateRating=(reviewList:IReviewList)=>{
     
-        if(reviewList.reviews.length==0)
-            return 0;
-        let sum=0;
-        reviewList.reviews.forEach((review) => (sum+=review.rating));
-        return (sum/reviewList.reviews.length);
-   };
-   const onDeleteReview=(reviewRem:IReview)=>
-   {
-        const newList:IReviewList={
-        reviews:reviewList.reviews.filter((review)=>review!=reviewRem),
+//         if(reviewList.reviews.length==0)
+//             return 0;
+//         let sum=0;
+//         reviewList.reviews.forEach((review) => (sum+=review.rating));
+//         return (sum/reviewList.reviews.length);
+//    };
+//    const onDeleteReview=(reviewRem:IReview)=>
+//    {
+//         const newList:IReviewList={
+//         reviews:reviewList.reviews.filter((review)=>review!=reviewRem),
 
-    };
-    setReviewList(newList);
-    setAverageRating(calculateRating(newList));
-    saveToLocalStorage(newList,params.id as string);
+//     };
+//     setReviewList(newList);
+//     setAverageRating(calculateRating(newList));
+//     saveToLocalStorage(newList,params.id as string);
 
-   };
+//    };
    
    return(
     <Fragment>
         <Flex flexDirection="column"  alignItems="center" >
             <Flex flexDirection="column" maxWidth="80%">
                 <ShowDetails show={data.show} />
-                <ShowReviewSection reviewList={reviewList} addReview={onAddReview} deleteReview={onDeleteReview}/>
+                <ShowReviewSection id={parseInt(params.id as string)}/>
             </Flex>
         </Flex>
     </Fragment>

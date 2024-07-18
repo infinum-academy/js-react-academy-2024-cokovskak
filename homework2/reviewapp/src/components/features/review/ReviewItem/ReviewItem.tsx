@@ -1,14 +1,20 @@
 import StarsRatingInput from '@/components/shared/StarsRating/StarsRatingInput';
+import { authFetcher } from '@/fetchers/fetcher';
+import { swrKeys } from '@/fetchers/swrKeys';
 import { IReview } from '@/typings/review';
+import { IUser } from '@/typings/user';
 import { StarIcon } from '@chakra-ui/icons';
-import { Button, Flex, Text } from '@chakra-ui/react';
+import { Avatar, Button, Flex, Text } from '@chakra-ui/react';
+import useSWR from 'swr';
+import { ReviewDeleteButton } from './ReviewDeleteButton/ReviewDeleteButton';
 
 export interface IReviewItemProps {
 	review: IReview;
-	onDelete: (review: IReview) => void;
 }
 
-export const ReviewItem = ({ review, onDelete }: IReviewItemProps) => {
+export const ReviewItem = ({ review }: IReviewItemProps) => {
+	const {data} = useSWR(swrKeys.user, authFetcher<{user: IUser}>);
+
 	return (
 		<Flex
 			bg="#371587"
@@ -23,13 +29,18 @@ export const ReviewItem = ({ review, onDelete }: IReviewItemProps) => {
 			border="15px"
 			align="flex-start"
 		>
+			<Flex alignItems="center"  justifyContent="space-between">
+				<Avatar height="32px" width="32px" name={review.user?.email} marginRight={1}/>
+                
+			</Flex>
+			<Text fontWeight="bold">{review.user?.email}</Text>
+
 			<Text marginBottom={4}>{review.comment}</Text>
 			<Text marginBottom={4}>{`${review.rating}/5`}</Text>
 
 			<StarsRatingInput value={review.rating} />
-			<Button cursor="pointer" onClick={() => onDelete(review)}>
-				Remove
-			</Button>
+			{data?.user.email === review.user?.email && <ReviewDeleteButton review={review}/>}
+
 		</Flex>
 	);
 };
