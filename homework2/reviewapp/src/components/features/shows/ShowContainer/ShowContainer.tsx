@@ -27,10 +27,12 @@ export interface IShowResponse{
 }
 
 export const ShowContainer=()=>{
-    let params = useParams();
+    const params = useParams();
+    let id=params.id as string;
     const [reviewList, setReviewList] = useState(mockReviews);
     const [averageRating, setAverageRating] = useState(0);
-    const { data, isLoading, error } = useSWR<IShowResponse>(swrKeys.show(params.id as string), authFetcher);
+    const { data, isLoading, error } = useSWR<IShowResponse>(swrKeys.show(id), authFetcher);
+    console.log(id);
     //useSWR(`/shows/${params.id}`, () => getShow(params.id as string));
 
     // const loadFromLocalStorage=(id:string)=>
@@ -100,7 +102,7 @@ export const ShowContainer=()=>{
         <Flex flexDirection="column"  alignItems="center" >
             <Flex flexDirection="column" maxWidth="80%">
                 <ShowDetails show={data.show} />
-                <ShowReviewSection id={parseInt(params.id as string)}/>
+                <ShowReviewSection id={parseInt(id)}/>
             </Flex>
         </Flex>
     </Fragment>
