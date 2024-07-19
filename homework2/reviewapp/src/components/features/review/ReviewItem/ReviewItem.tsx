@@ -33,10 +33,10 @@ export const ReviewItem = ({ review }: IReviewItemProps) => {
 				<Avatar height="32px" width="32px" name={review.user?.email} marginRight={1}/>
                 
 			</Flex>
-			<Text fontWeight="bold">{review.user?.email}</Text>
+			<Text data-testid="email"  marginBottom={4}>{review.user?.email}</Text>
 
-			<Text marginBottom={4}>{review.comment}</Text>
-			<Text marginBottom={4}>{`${review.rating}/5`}</Text>
+			<Text data-testid="comment" marginBottom={4}>{review.comment}</Text>
+			<Text data-testid="rating" marginBottom={4}>{`${review.rating}/5`}</Text>
 
 			<StarsRatingInput value={review.rating} />
 			{data?.user.email === review.user?.email && <ReviewDeleteButton review={review}/>}
