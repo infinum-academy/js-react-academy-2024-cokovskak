@@ -16,15 +16,10 @@ export const ReviewDeleteButton=({review}:IReviewDeleteButton)=>{
             mutate(swrKeys.review(review.show_id))
         }
     });
-    const dltReview=async()=>{
-        try{
-            await trigger();
-        }
-        catch(error){}
-    }
+    
     return(
     <Fragment>
-              <Button width={'30%'} onClick={() => {dltReview()}}>Remove</Button>
+              <Button onClick={() => trigger()}>Remove</Button>
 
     </Fragment>);
 

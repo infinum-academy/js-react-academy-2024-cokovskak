@@ -14,3 +14,13 @@ export async function createReview(url : string, { arg }: { arg: IReview }){
       method: 'DELETE'
     });
   }
+  export async function editReview(url : string, { arg }: { arg: IReview }){
+    const editData={
+      rating:arg.rating,
+      comment:arg.comment
+    }
+    return authFetcher<IReview>(url,{
+      method: 'PATCH',
+      body:JSON.stringify(editData)
+    });
+  }

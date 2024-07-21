@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ReviewItem } from './ReviewItem';
 import '@testing-library/jest-dom'
-import { ReviewDeleteButton } from './ReviewDeleteButton/ReviewDeleteButton';
+import { ReviewDeleteButton } from './components/ReviewDeleteButton/ReviewDeleteButton';
 import { deleteReview } from '@/fetchers/review';
 
 describe('ReviewItem', () => {
@@ -20,7 +20,12 @@ describe('ReviewItem', () => {
         render(<ReviewItem review={mock1} />);
         expect(screen.getByTestId('comment')).toBeInTheDocument();
     });
-   
+
+   it('should render the delete button',()=>{
+    render(<ReviewItem review={mock1}/>);
+    const userComment=screen.getByTestId('comment') as HTMLElement;
+    expect(userComment.textContent).toBe(mock1.comment);
+   })
     
   
     

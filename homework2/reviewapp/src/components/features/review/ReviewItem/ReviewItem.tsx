@@ -6,8 +6,8 @@ import { IUser } from '@/typings/user';
 import { StarIcon } from '@chakra-ui/icons';
 import { Avatar, Button, Flex, Text } from '@chakra-ui/react';
 import useSWR from 'swr';
-import { ReviewDeleteButton } from './ReviewDeleteButton/ReviewDeleteButton';
-
+import { ReviewDeleteButton } from './components/ReviewDeleteButton/ReviewDeleteButton';
+import {ReviewEditButton} from './components/ReviewEditButton/ReviewEditButton';
 export interface IReviewItemProps {
 	review: IReview;
 }
@@ -37,9 +37,12 @@ export const ReviewItem = ({ review }: IReviewItemProps) => {
 
 			<Text data-testid="comment" marginBottom={4}>{review.comment}</Text>
 			<Text data-testid="rating" marginBottom={4}>{`${review.rating}/5`}</Text>
+          
 
 			<StarsRatingInput value={review.rating} />
+			{data?.user.email === review.user?.email && <ReviewEditButton  editedReview={review} />}
 			{data?.user.email === review.user?.email && <ReviewDeleteButton review={review}/>}
+
 
 		</Flex>
 	);
