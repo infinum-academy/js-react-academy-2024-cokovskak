@@ -14,13 +14,9 @@ interface ILoginFormInput {
     email: string,
     password: string
  }
- interface ILoginError {
-   isError: boolean,
-   message?: string
-}
+
  export const LoginForm=()=>{
     const {register, handleSubmit, setError,formState: {isSubmitting, errors}} = useForm<ILoginFormInput>();
-   //  const {mutate} = useSWR(swrKeys.user);
     
     const {trigger} = useSWRMutation(swrKeys.login, mutator, {
        onSuccess: (data) => {
@@ -47,7 +43,7 @@ interface ILoginFormInput {
                    <InputLeftElement>
                       <EmailIcon color="white" />
                    </InputLeftElement>
-                   <Input {...register("email", {required: 'Email is required'})} type="email" color="white" placeholder="Email"/>
+                   <Input {...register("email", {required: 'Email is required'})} type="email" color="white" placeholder="Email" data-testid="email"/>
                </InputGroup>
 
                <FormErrorMessage  margin={0} textAlign="left">{errors?.email?.message}</FormErrorMessage>
@@ -56,14 +52,14 @@ interface ILoginFormInput {
             
             <FormControl  isInvalid={Boolean(errors.password)}  marginTop={10} gap={10 } as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
 
-                <PasswordInput registerProps={{...register("password", {required: 'Password is required'})}} errors={errors} />
+                <PasswordInput data-testid="password" registerProps={{...register("password", {required: 'Password is required'})}} errors={errors}  />
                 <FormErrorMessage  margin={0} textAlign="left">{errors?.password?.message}</FormErrorMessage>
 
              </FormControl>
              
              <FormControl marginTop={10} gap={10 } as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
              
-               <Button isLoading={isSubmitting} width="60%" type="submit" color="darkblue" margin="auto">LOGIN</Button>
+               <Button isLoading={isSubmitting} width="60%" type="submit" color="darkblue" margin="auto" data-testid="loginButton">LOGIN</Button>
  
              </FormControl>
              
