@@ -51,7 +51,7 @@ export const ReviewForm = ({ onAddReview,index }: IReviewFormProps) => {
 			</FormControl>
 		
 		<FormControl isDisabled={isSubmitting} marginBottom={10}>
-            <Button isLoading={isSubmitting} type="submit" width="30%" borderRadius="10px">Post</Button>
+            <Button isLoading={isSubmitting} type="submit" >Post</Button>
          </FormControl>
 		</chakra.form>
 	);
