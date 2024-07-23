@@ -6,9 +6,11 @@ import { usePathname, useRouter } from "next/navigation";
 import useSWR, { mutate } from "swr";
 export const SidebarNavigation=()=>{
   const pathname=usePathname();
+  const to=useRouter();
   const onLogout=()=>{
     localStorage.removeItem('loginInfo');
     mutate(swrKeys.user,null,{revalidate: false});
+   to.push('/');
   }
 return (
     <Flex bg="#2a0066" flexDirection="column" 

@@ -1,9 +1,11 @@
+import { IUser } from "./user";
+
 export interface IReview{
-    email?: string;
-    avatar?: string;
+    id?: string;
     rating: number;
     comment: string;
-
+    user?:IUser;
+    show_id: number;
 }
 export interface IReviewList
 {

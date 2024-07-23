@@ -19,7 +19,7 @@ export default function PasswordInput({registerProps, errors} : IPasswordInputPr
          <InputLeftElement>
             <LockIcon color="white" />
          </InputLeftElement>
-         <Input {...registerProps} type={isClicked ? "text" : "password"} color="white" placeholder="Password"/>
+         <Input {...registerProps} type={isClicked ? "text" : "password"} color="white" placeholder="Password" data-testid="password"/>
          <InputRightElement>
             {isClicked ? <ViewIcon color="white" onClick={onClickHandler}/>
                      : <ViewOffIcon color="white" onClick={onClickHandler}/>}

@@ -3,14 +3,10 @@
 import { AuthRedirect } from "@/components/shared/AuthRedirect/AuthRedirect";
 import { fetcher } from "@/fetchers/fetcher";
 import { swrKeys } from "@/fetchers/swrKeys";
+import { IUser } from "@/typings/user";
 import { Container, Flex, Heading,Text,Image } from "@chakra-ui/react";
 import useSWR from "swr";
 
-export interface IUser {
-    uid: string;
-    email: string;
-    image_url: string;
-  }
 interface IApiResponse{
   user: IUser;
 }
