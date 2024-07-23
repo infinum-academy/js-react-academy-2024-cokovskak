@@ -15,6 +15,23 @@ const Card = defineMultiStyleConfig({
                 padding: "15px",
                
             }
+        },
+        hugeCard:{
+            container:{
+                width: "1053px",
+                height:"609px",
+                overflow:"hidden",
+                marginBottom:"20px"
+        
+            },
+            body:{
+                color: "purple2",
+                padding:"15px",
+                paddingLeft:"15px",
+                borderRadius:"24px",
+                        
+
+            }
         }
     }
     

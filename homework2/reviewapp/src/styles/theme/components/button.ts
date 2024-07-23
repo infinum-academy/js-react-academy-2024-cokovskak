@@ -16,6 +16,14 @@ const Button=defineStyleConfig({
             color: "purple2",
             backgroundColor: "white",
             
+        },
+        navbar:{
+            color: "white",
+            backgroundColor: "transparent",
+            _active: {
+                backgroundColor: "purple2",
+              },
+             
         }
        
 

@@ -3,7 +3,7 @@
 import { mutator } from "@/fetchers/mutators";
 import { swrKeys } from "@/fetchers/swrKeys";
 import { EmailIcon } from "@chakra-ui/icons";
-import { Flex, chakra, FormControl, InputGroup, InputLeftElement, Input, FormHelperText, Button, FormErrorMessage } from "@chakra-ui/react";
+import { Flex, Image,chakra, FormControl, InputGroup, InputLeftElement, Input, FormHelperText, Button, FormErrorMessage, useStyleConfig } from "@chakra-ui/react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
@@ -33,12 +33,15 @@ interface ILoginFormInput {
        }
        catch(error) {}
     }
- 
+    const styles = useStyleConfig('RegisterForm');
     return (
-       <Flex margin="auto" direction="column" padding={2} alignItems="center">
+       <Flex __css={styles} >
+          <Flex   marginTop={10} >
+         <Image width="199.06px" height="31.73px" src="/assets/images/logo.png"/>
+         </Flex>
           <chakra.form width="80%" onSubmit={handleSubmit(onLogin)}>
             
-             <FormControl isInvalid={Boolean(errors.email)}  marginTop={10} gap={10 } as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
+             <FormControl isInvalid={Boolean(errors.email)}  as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
                 <InputGroup marginBottom={2} display="flex" flexDirection="column" alignContent="left">
                    <InputLeftElement>
                       <EmailIcon color="white" />
@@ -50,20 +53,20 @@ interface ILoginFormInput {
                </FormControl>
             
             
-            <FormControl  isInvalid={Boolean(errors.password)}  marginTop={10} gap={10 } as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
+            <FormControl  isInvalid={Boolean(errors.password)} as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
 
                 <PasswordInput data-testid="password" registerProps={{...register("password", {required: 'Password is required'})}} errors={errors}  />
                 <FormErrorMessage  margin={0} textAlign="left">{errors?.password?.message}</FormErrorMessage>
 
              </FormControl>
              
-             <FormControl marginTop={10} gap={10 } as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
+             <FormControl as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
              
                <Button isLoading={isSubmitting} width="60%" type="submit" color="darkblue" margin="auto" data-testid="loginButton">LOGIN</Button>
  
              </FormControl>
              
-             <FormControl marginTop={10} gap={10 } as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
+             <FormControl  as='fieldset' isDisabled={isSubmitting} display="flex" flexDirection="column" padding={2} borderRadius="20px">
             
                 <FormHelperText textAlign="center" color="white">Don't have an account? <Link  href="/register">Register</Link></FormHelperText>
 

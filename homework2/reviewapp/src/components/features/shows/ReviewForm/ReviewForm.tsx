@@ -38,21 +38,24 @@ export const ReviewForm = ({ onAddReview,index }: IReviewFormProps) => {
 	};
 	return (
 		<chakra.form onSubmit={handleSubmit(addReview)}>
-			  <FormControl isInvalid={Boolean(errors.comment)} isDisabled={isSubmitting} marginBottom={10}>
-            <Textarea {...register("comment", {required: 'Please write a comment'})} textColor="black" backgroundColor="white"placeholder="Add review" width="100%" marginBottom={1} paddingTop={1} />
-            <FormErrorMessage marginTop={0} marginBottom={1}>{errors.comment?.message}</FormErrorMessage>
-         </FormControl>
+			<FormControl isInvalid={Boolean(errors.comment)} isDisabled={isSubmitting} marginBottom={10}>
+            	<Textarea {...register("comment", {required: 'Please write a comment'})} textColor="black" backgroundColor="white"placeholder="Add review" width="100%" marginBottom={1} paddingTop={1} />
+            	<FormErrorMessage marginTop={0} marginBottom={1}>{errors.comment?.message}</FormErrorMessage>
+         	</FormControl>
 
-			
-		<FormControl isDisabled={isSubmitting} marginBottom={10}>
-				<Flex alignItems={'center'} marginBottom={1} data-testid="review-rating">
-					<StarsRatingInput value={rating} onChange={handleRatingChange} />
-				</Flex>
+		 <Flex direction="row" justifyContent="space-between"> 
+
+			<FormControl isDisabled={isSubmitting} >
+					<Flex alignItems={'center'} marginBottom="5px" marginTop="5px" data-testid="review-rating">
+						<StarsRatingInput value={rating} onChange={handleRatingChange} />
+					</Flex>
 			</FormControl>
+			
+			<FormControl isDisabled={isSubmitting} marginBottom={10} maxWidth="144px">
+				<Button  isLoading={isSubmitting} variant="main" type="submit" >Post</Button>
+			</FormControl>
+		 </Flex>
 		
-		<FormControl isDisabled={isSubmitting} marginBottom={10}>
-            <Button isLoading={isSubmitting} type="submit" >Post</Button>
-         </FormControl>
 		</chakra.form>
 	);
 };

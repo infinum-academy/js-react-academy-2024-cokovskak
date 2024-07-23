@@ -1,6 +1,7 @@
 'use client'
 import { swrKeys } from "@/fetchers/swrKeys";
-import { Flex,Heading,Text } from "@chakra-ui/react";
+import { fontSize } from "@/styles/theme/foundations/font";
+import { Button, Flex,Heading,Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import useSWR, { mutate } from "swr";
@@ -13,28 +14,30 @@ export const SidebarNavigation=()=>{
    to.push('/');
   }
 return (
-    <Flex bg="#2a0066" flexDirection="column" 
-    gap={4} width="20vw" color="white" height="auto"
-    minHeight="100vh"
-
-    padding={10}
-    fontSize="large"
-    
-    >
-      <Heading marginLeft={2}> TV SHOWS APP</Heading>
-      <Text color="white"  background={pathname === "/all-shows" ? "rgba(255, 255, 255, 0.2)" : "transparent"} as={NextLink} href={`/all-shows`}>
-        All shows
-      </Text>
-      <Text color="white"  background={pathname === "/all-shows/top-rated" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/all-shows/top-rated`}>
-        Top rated
-      </Text>
-      <Text color="white"  background={pathname === "/my-profile" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  as={NextLink} href={`/my-profile`}>
-        My profile
-      </Text>
-      <Text color="white" onClick={onLogout} background={pathname === "/log-out" ? "rgba(255, 255, 255, 0.2)" : "transparent"}  marginTop="auto" fontSize="medium">
-        Log out
-      </Text>
-    </Flex>
+  <Flex
+  bg="darkpurple"
+  flexDirection="column"
+  gap={4}
+  width="20vw"
+  color="white"
+  height="auto"
+  minHeight="100vh"
+  padding={10}
+  fontSize={fontSize.title}
+>
+  <Button as={NextLink} href="/all-shows" variant="navbar"  isActive={pathname === "/all-shows"}   >
+    All shows
+  </Button>
+  <Button as={NextLink} href="/all-shows/top-rated" variant="navbar"  isActive={pathname === "/all-shows/top-rated"} >
+    Top rated
+  </Button>
+  <Button  as={NextLink} href="/my-profile" variant="navbar" isActive={pathname === "/my-profile"} >
+    My profile
+  </Button>
+  <Button onClick={onLogout} variant="navbar"  marginTop="auto"  fontSize="medium"  >
+    Log out
+  </Button>
+</Flex>
 );
 
 }

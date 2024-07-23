@@ -1,7 +1,7 @@
 'use client'
 import { mutator } from "@/fetchers/mutators";
 import { swrKeys } from "@/fetchers/swrKeys";
-import { Button, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading,Input,InputGroup,InputLeftElement,Link,Text, chakra } from "@chakra-ui/react"
+import { Button, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading,Input,InputGroup,InputLeftElement,Link,Text, chakra, useStyleConfig,Image } from "@chakra-ui/react"
 import { useState } from "react";
 import { useForm } from "react-hook-form"
 import useSWRMutation from "swr/mutation";
@@ -60,16 +60,20 @@ export const  RegisterForm=()=> {
           }
        }
     }
- 
+    const styles = useStyleConfig('RegisterForm');
+
     return <>
     {registered && (router.push("/login"))}
     {!registered && (
-       <Flex margin="auto" direction="column" padding={2} alignItems="center">
-          <chakra.form width="80%" onSubmit={handleSubmit(onRegister)}>
-             
-             <FormControl isInvalid={Boolean(errors.email)} marginTop={10} gap={10 }as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="20px">
+       <Flex  __css={styles}  >
+         <Flex   marginTop={10} >
+         <Image width="199.06px" height="31.73px" src="/assets/images/logo.png"/>
+         </Flex>
+         
+         <chakra.form  width="80%" onSubmit={handleSubmit(onRegister)}>
+             <FormControl isInvalid={Boolean(errors.email)}  as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} >
                 
-                <InputGroup  marginBottom={2} display="flex" flexDirection="column" alignContent="left">
+                <InputGroup  borderRadius={10} marginBottom={2} display="flex" flexDirection="column" alignContent="left">
                    <InputLeftElement>
                       <EmailIcon color="white" />
                    </InputLeftElement>
@@ -80,22 +84,22 @@ export const  RegisterForm=()=> {
 
              </FormControl>
 
-            <FormControl isInvalid={Boolean(errors.password)} marginTop={10} gap={10 }as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="20px">
+            <FormControl isInvalid={Boolean(errors.password)}  as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="30px">
                 <PasswordInput registerProps={{...register("password", passwordRequirements)}} errors={errors.password} />
                 <FormErrorMessage margin={0} textAlign="left">{errors?.password?.message}</FormErrorMessage>
             </FormControl>
                 
-            <FormControl  isInvalid={Boolean(errors.password_confirmation)} marginTop={10} gap={10 }as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="20px">
+            <FormControl  isInvalid={Boolean(errors.password_confirmation)}  as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="30px">
                 <PasswordInput registerProps={{...register("password_confirmation", passwordConfirmationRequirements)}} errors={errors.password_confirmation} />
                 <FormErrorMessage margin={0} textAlign="left">{errors?.password_confirmation?.message}</FormErrorMessage>
 
              </FormControl>
               
-            <FormControl marginTop={10} gap={10 }as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="20px">
+            <FormControl  as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="30px">
                <Button isLoading={isSubmitting} width="60%" type="submit" color="darkblue" margin="auto">SIGN UP</Button>
             </FormControl>
             
-            <FormControl marginTop={10} gap={10 }as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="20px">
+            <FormControl as='fieldset' disabled={isSubmitting} display="flex" flexDirection="column"  padding={2} borderRadius="30px">
                 <FormHelperText textAlign="center" color="white">Already have an account? <Link fontWeight="bold" href="/login">Login</Link></FormHelperText>
             </FormControl>
           </chakra.form>
