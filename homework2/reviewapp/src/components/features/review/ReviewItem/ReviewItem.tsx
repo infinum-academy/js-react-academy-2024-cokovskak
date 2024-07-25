@@ -7,6 +7,7 @@ import { StarIcon } from '@chakra-ui/icons';
 import { Avatar, Button, Flex, Menu, Text } from '@chakra-ui/react';
 import useSWR from 'swr';
 import { ReviewMenuButton } from './components/ReviewMenuButton/ReviewMenuButton';
+import { fontSize } from '@/styles/theme/foundations/font';
 
 export interface IReviewItemProps {
 	review: IReview;
@@ -16,7 +17,7 @@ export const ReviewItem = ({ review }: IReviewItemProps) => {
 	const {data} = useSWR(swrKeys.user, authFetcher<{user: IUser}>);
 
 	return (
-		<Flex bg="#371587" fontSize="xl" borderRadius="15px" flexDirection="row" marginBottom={3}
+		<Flex bg="#371587" fontSize={fontSize.captionWeb} borderRadius="15px" flexDirection="row" marginBottom={3}
 			width="100%" padding={8} height="fit-content" textColor="white" border="15px" align="flex-start">
 			
 			
