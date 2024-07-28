@@ -30,7 +30,7 @@ export const ShowReviewSection=({id}:ShowReviewSectionProps)=>{
    };
 
    if (error) {
-    if (error.status !== 401) return <Box color="white">Something went wrong...</Box>;
+    if (error.status !== 401) return <Box color="white">There is an error...</Box>;
  }
  if (isLoading || !data) {
     return <Box color="white">In progress..</Box>;
