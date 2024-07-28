@@ -45,8 +45,8 @@ export const ShowContainer=()=>{
    
    return(
     <Fragment>
-        <Flex flexDirection="column"  alignItems="center" >
-            <Flex flexDirection="column" maxWidth="80%">
+        <Flex flexDirection="column"  alignItems="center" marginLeft={40} >
+            <Flex flexDirection="column"  >
                 <ShowDetails show={data.show} />
                 <ShowReviewSection id={parseInt(id)}/>
             </Flex>

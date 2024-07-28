@@ -12,14 +12,14 @@ export const SidebarNavigation=()=>{
   
 return (
   <Flex direction={"column"} >
-    <Flex direction={"row"} padding={10} width="auto"alignItems="center"justifyContent="space-between" >
+    <Flex direction={"row"} padding={10}  alignItems="center"justifyContent="space-between" >
     <Header/>
     <Hide above='md'>
      <SidebarNavigationMobile/>
    </Hide>
     </Flex>
    
-    <Show above='xl'>
+    <Show above='md'>
       <SidebarNavigationDesktop/>
     </Show>
    

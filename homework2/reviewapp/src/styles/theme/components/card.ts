@@ -3,34 +3,40 @@ import { cardAnatomy} from "@chakra-ui/anatomy";
 
 const {defineMultiStyleConfig} = createMultiStyleConfigHelpers(cardAnatomy.keys)
 const Card = defineMultiStyleConfig({
-    variants:{
-        smallCard: {
+    sizes:{
+        sm:{
             container:{
                 overflow:"hidden",
-                width:"240px" ,
+               
                 borderRadius:"24px",
             },
             body:{
-                color: "purple2",
                 padding: "15px",
-               
             }
         },
-        hugeCard:{
+        lg:{
             container:{
-                width: "1053px",
-                height:"609px",
+                
+               
                 overflow:"hidden",
-                marginBottom:"20px"
-        
+                marginBottom:"20px",
+                marginTop:"40px",
+                borderRadius:"24px",
             },
             body:{
-                color: "purple2",
+                
                 padding:"15px",
                 paddingLeft:"15px",
-                borderRadius:"24px",
-                        
-
+               
+            }
+        }
+    },
+    variants:{
+        primary: {
+            
+            body:{
+                color: "purple.200",
+                
             }
         }
     }

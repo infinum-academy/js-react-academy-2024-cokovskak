@@ -38,7 +38,7 @@ interface ILoginFormInput {
        <Flex flexDirection= "column"
        alignItems="center"
        borderRadius="24px"
-       bg="purple2"
+       bg="purple.200"
        margin= "auto"
        marginTop="150px"
        width= "500px"

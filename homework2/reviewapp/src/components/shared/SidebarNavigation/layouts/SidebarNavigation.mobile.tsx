@@ -23,7 +23,7 @@ export const SidebarNavigationMobile=()=>{
          
         >
           <DrawerOverlay />
-          <DrawerContent bg="darkpurple" flexDirection="column"  gap={4} width="20vw">
+          <DrawerContent bg="purple.300" flexDirection="column"  gap={4} width={{ base: "70%", sm: "60%", md: "70%", lg: "70%", xl: "80%" }}>
             <DrawerCloseButton color="white" />
             
   

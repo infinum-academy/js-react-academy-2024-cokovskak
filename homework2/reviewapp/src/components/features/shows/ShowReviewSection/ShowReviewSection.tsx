@@ -37,12 +37,12 @@ export const ShowReviewSection=({id}:ShowReviewSectionProps)=>{
  }  
     return(
         <Fragment>
-            <Flex direction="row" width="1053px" marginTop={20}  >
-                <Heading marginRight={40} fontSize={fontSize.title} marginBottom={5} textColor="white">
+            <Flex direction="row"  marginTop={20}  width={{ md:"75%",lg: "80%" ,sm:"70%"}} >
+                <Heading marginRight={{base:40,lg:20,sm:5}} fontSize={{base:fontSize.huge,lg:fontSize.huge,sm:fontSize.xl}} marginBottom={5} textColor="white">
                 Reviews
                 </Heading>
-                
-                <Flex  direction="column" width="870px">
+                {/* width="870px"  */}
+                <Flex  direction="column"  width={{ md:"75%",lg: "80%" ,sm:"70%"}}>
                 <ReviewForm index={id} onAddReview={addReview}/>
                 <ReviewList reviewList={data.reviews} />
                 </Flex>

@@ -1,7 +1,10 @@
 export const colors={
-    purple2: "#371687",
+    purple:{
+        100:"#8D5CE5",
+        200:"#371687",
+        300:"#1B004C",
+    },
+   
     white: "#ffffff",
-    lightpurple:"#8D5CE5",
-     darkpurple: "#1B004C",
     error: "#FF2498"
 }
