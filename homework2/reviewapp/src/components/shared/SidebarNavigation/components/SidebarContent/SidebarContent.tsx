@@ -27,7 +27,6 @@ return (
   <Button  as={NextLink} href="/my-profile" variant="navbar" isActive={pathname === "/my-profile"} >
     My profile
   </Button>
-  
   <Stepper/>
   <Button onClick={onLogout} variant="navbar"    fontSize="medium"  >
     Log out

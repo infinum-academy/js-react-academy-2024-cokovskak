@@ -2,18 +2,17 @@ import { useContext } from "react";
 import { StepperContext } from "./StepperContextProvider"
 import { StepperResults } from "./StepperResults";
 import { StepperStep } from "./StepperStep";
+export const StepperSteps = () => {
+    const { currentStep, totalSteps } = useContext(StepperContext);
 
-export const StepperSteps=()=>{
-    const{currentStep,totalSteps}=useContext(StepperContext);
-  
-    if(currentStep<totalSteps){
-        console.log("StepperStep")
-        return <StepperStep/>
+    
+    if(currentStep < totalSteps) {
+        console.log("Total "+totalSteps)
+        console.log("Step "+currentStep)
+        return <StepperStep />
+    } else {
+        console.log("Total"+totalSteps)
+        console.log("Step"+currentStep)
+        return <StepperResults />
     }
-    else{
-        console.log("Step is"+currentStep)
-        console.log(totalSteps)
-        return <StepperResults/>
-    }
-
 }

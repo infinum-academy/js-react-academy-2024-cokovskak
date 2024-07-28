@@ -8,7 +8,7 @@ export interface IShowItemProps {
 }
 export const ShowDetails = ({ show }: IShowItemProps) => {
 	return (
-		<Card variant="primary" size="lg" width={{ md:"75%",lg: "80%" ,sm:"70%"}}  >
+		<Card variant="primary" size="lg" width={{ base:"75%",md:"75%",lg: "80%" ,sm:"70%"}}  >
 			<Image
 				height={"440px"}
 				width={"1054px"}

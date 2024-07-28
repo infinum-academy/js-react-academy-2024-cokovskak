@@ -1,4 +1,4 @@
-import { Button, Heading, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
+import { Button, Flex, Heading, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
 import { Fragment } from "react";
 import { StepperSteps } from "./components/StepperSteps";
 import { StepperProgressBar } from "./components/StepperProgressBar";
@@ -8,7 +8,7 @@ export const Stepper=()=>{
     const{isOpen,onOpen,onClose}=useDisclosure();
     return(
 
-     <Fragment>
+     <Flex>
         <Button onClick={onOpen} variant="navbar" size={{base:"md",lg:"md",sm:"sm"}}>Show Picker</Button>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay/>
@@ -25,6 +25,6 @@ export const Stepper=()=>{
             </ModalContent>
            
         </Modal>
-     </Fragment>
+     </Flex>
     );
 }

@@ -28,20 +28,25 @@ interface IShowList{
 export const StepperContext = createContext<IStepperContext>({} as IStepperContext)
 
 export  const StepperContextProvider=({children}: IStepperContextProvider)=>{
-    const [currentStep,setCurrentStep]=useState(1);
+    const [currentStep,setCurrentStep]=useState(0);
     const [selectedShowsList,setSelectedShows]=useState<IShow[]>([]);
 	const { data } = useSWR(swrKeys.all_shows, authFetcher<IListShows>);
     const showsList=data?.shows;
-const totalSteps=5;
+    const totalSteps=5;
   
     if(!showsList){
         return  <Box color="error">There was an error...</Box>;
     }
-    console.log("Total steps is "+totalSteps)
-    return(
+    return (
         <StepperContext.Provider value={{
-            currentStep,setCurrentStep,showsList,selectedShowsList,setSelectedShows,totalSteps,
-
-        }}> {children}</StepperContext.Provider>
+            currentStep,
+            setCurrentStep,
+            showsList,
+            selectedShowsList,
+            setSelectedShows,
+            totalSteps
+        }}>
+            {children}
+        </StepperContext.Provider>
     );
 }
