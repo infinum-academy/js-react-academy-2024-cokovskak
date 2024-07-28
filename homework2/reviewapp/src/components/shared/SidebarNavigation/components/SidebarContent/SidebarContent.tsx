@@ -14,17 +14,9 @@ export const SidebarContent=()=>{
    to.push('/');
   }
 return (
-  <Flex
-  bg="darkpurple"
-  flexDirection="column"
-  gap={4}
-  width="20vw"
-  color="white"
-  height="auto"
-  minHeight="100vh"
-  padding={10}
-  fontSize={fontSize.title}
->
+  <>
+
+
   <Button as={NextLink} href="/all-shows" variant="navbar"  isActive={pathname === "/all-shows"}   >
     All shows
   </Button>
@@ -34,10 +26,12 @@ return (
   <Button  as={NextLink} href="/my-profile" variant="navbar" isActive={pathname === "/my-profile"} >
     My profile
   </Button>
-  <Button onClick={onLogout} variant="navbar"  marginTop="auto"  fontSize="medium"  >
+  
+
+  <Button onClick={onLogout} variant="navbar"    fontSize="medium"  >
     Log out
   </Button>
-</Flex>
+</>
 );
 
 }

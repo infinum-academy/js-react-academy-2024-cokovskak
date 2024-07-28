@@ -11,15 +11,18 @@ import { SidebarNavigationDesktop } from "./layouts/SidebarNavigation.desktop";
 export const SidebarNavigation=()=>{
   
 return (
-  <Flex direction={"column"}>
+  <Flex direction={"column"} >
+    <Flex direction={"row"} padding={10} width="auto"alignItems="center"justifyContent="space-between" >
     <Header/>
-    <Show above='md'>
+    <Hide above='md'>
+     <SidebarNavigationMobile/>
+   </Hide>
+    </Flex>
+   
+    <Show above='xl'>
       <SidebarNavigationDesktop/>
     </Show>
-    <Hide above='xl'>
-     
-      <SidebarNavigationMobile/>
-    </Hide>
+   
     
     
   </Flex>

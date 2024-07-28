@@ -3,10 +3,11 @@ import { Flex, Heading,Image } from "@chakra-ui/react";
 
 export const Header=() => {
 	return (
-		<Flex width="80%" justifyContent="space-between"  alignItems="center">
-			 <Flex alignItems="center" marginLeft={12} marginTop={10} >
+		<Flex  justifyContent="space-between"  alignItems="center"  >
+			 <Flex alignItems="center" marginLeft={12} >
                
-                 <Image width="200px" height="32px" src="/assets/images/logo.png"/>
+                 <Image  width={{ base: "150px", md: "200px", sm: "150px" }} 
+                    height={{ base: "24px", md: "32px", sm: "24px" }}  src="/assets/images/logo.png"/>
             </Flex>
 		</Flex>
 	);
