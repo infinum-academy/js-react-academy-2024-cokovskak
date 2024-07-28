@@ -39,11 +39,11 @@ export const ReviewForm = ({ onAddReview,index }: IReviewFormProps) => {
 	return (
 		<chakra.form onSubmit={handleSubmit(addReview)}>
 			<FormControl isInvalid={Boolean(errors.comment)} isDisabled={isSubmitting} marginBottom={10}>
-            	<Textarea {...register("comment", {required: 'Please write a comment'})} textColor="black" backgroundColor="white"placeholder="Add review" width="100%" marginBottom={1} paddingTop={1} />
+            	<Textarea {...register("comment", {required: 'Please write a comment'})} textColor="black" backgroundColor="white"placeholder="Add review"  marginBottom={1} paddingTop={1} />
             	<FormErrorMessage marginTop={0} marginBottom={1}>{errors.comment?.message}</FormErrorMessage>
          	</FormControl>
 
-		 <Flex direction="row" justifyContent="space-between"> 
+		 <Flex direction="row" justifyContent="space-between" > 
 
 			<FormControl isDisabled={isSubmitting} >
 					<Flex alignItems={'center'} marginBottom="5px" marginTop="5px" data-testid="review-rating">
@@ -51,8 +51,8 @@ export const ReviewForm = ({ onAddReview,index }: IReviewFormProps) => {
 					</Flex>
 			</FormControl>
 			
-			<FormControl isDisabled={isSubmitting} marginBottom={10} maxWidth="144px">
-				<Button  isLoading={isSubmitting} variant="main" type="submit" >Post</Button>
+			<FormControl isDisabled={isSubmitting} marginBottom={10} width={{base:"80%",lg:"30%",sm:"50%"}} >
+				<Button  isLoading={isSubmitting}   variant="main" size={{base:"md",lg:"md",sm:"sm"}} type="submit" >Post</Button>
 			</FormControl>
 		 </Flex>
 		

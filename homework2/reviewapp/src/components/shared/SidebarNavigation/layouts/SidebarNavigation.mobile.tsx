@@ -13,28 +13,28 @@ export const SidebarNavigationMobile=()=>{
     const btnRef = React.useRef()
     console.log("Here");
     return (
-      <>
+      < >
  
-        <HamburgerIcon boxSize="24px" color="white" onClick={onOpen}/>
+        <HamburgerIcon  boxSize="24px" color="white" onClick={onOpen}/>
         <Drawer
           isOpen={isOpen}
-          
+         
           onClose={onClose}
          
         >
           <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
+          <DrawerContent bg="purple.300" flexDirection="column"  gap={4} width={{ base: "70%", sm: "60%", md: "70%", lg: "70%", xl: "80%" }}>
+            <DrawerCloseButton color="white" />
             
   
-            <DrawerBody>
+            <DrawerBody marginTop="30px" >
               <SidebarContent/>
             </DrawerBody>
   
             
           </DrawerContent>
         </Drawer>
-      </>
+        </>
     )
 
 }

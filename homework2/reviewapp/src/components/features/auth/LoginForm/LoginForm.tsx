@@ -33,9 +33,18 @@ interface ILoginFormInput {
        }
        catch(error) {}
     }
-    const styles = useStyleConfig('RegisterForm');
+   
     return (
-       <Flex __css={styles} >
+       <Flex flexDirection= "column"
+       alignItems="center"
+       borderRadius="24px"
+       bg="purple.200"
+       margin= "auto"
+       marginTop="150px"
+       width= "500px"
+       height= "600px"
+       padding="20px"
+       gap="30px"       position= "relative"   >
           <Flex   marginTop={10} >
          <Image width="199.06px" height="31.73px" src="/assets/images/logo.png"/>
          </Flex>

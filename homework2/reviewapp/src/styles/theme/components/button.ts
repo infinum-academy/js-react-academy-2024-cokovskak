@@ -9,11 +9,15 @@ const Button=defineStyleConfig({
         md:{
                 w:"144px",
                 h: "52px"
+        },
+        sm:{
+            w:"72px",
+            h: "26px"
         }
     },
     variants:{
         main:{
-            color: "purple2",
+            color: "purple.200",
             backgroundColor: "white",
             
         },
@@ -21,7 +25,7 @@ const Button=defineStyleConfig({
             color: "white",
             backgroundColor: "transparent",
             _active: {
-                backgroundColor: "purple2",
+                backgroundColor: "purple.200" ,
               },
              
         }

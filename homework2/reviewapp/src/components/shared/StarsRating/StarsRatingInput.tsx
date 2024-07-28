@@ -13,8 +13,8 @@ interface IStarsRatingProps {
       {Array.from(Array(5)).map((_, index) => (
         <StarIcon
           key={index + 1}
-          w="24px"
-          h="24px"
+          w={{base:"24px",lg:"24px",sm:"12px"}}
+          h={{base:"24px",lg:"24px",sm:"12px"}}
           color={index + 1<= value ? 'gold' : 'primary.100'}
     
           onClick={() => onChange?.(index + 1)}

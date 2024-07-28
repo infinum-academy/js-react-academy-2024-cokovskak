@@ -4,14 +4,12 @@ export const fonts = {
 
   };
 export const fontSize={
-    headlineWeb: "40px",
-    headlineMob: "24px",
-    title:"24px",
-    bodyWeb:"20px",
-    bodyMob:"14px",
-    subtitle: "18px",
-    captionWeb: "16px",
-    captionMob:"14px",
-    button:"14px",
-    note:"12px"
+  huge: "40px",
+  '2xl':"24px",
+  xl:"20px",
+  lg:"18px",
+  md:"16px",
+  sm:"14px",
+  xs:"12px"
+
 };

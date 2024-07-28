@@ -13,9 +13,12 @@ export default function RootLayout({
 }>) {
   return (
    <Box>
-    <Flex textColor="white" >
+    <Flex textColor="white" flexDirection={{base:"column",lg:"row"}}>
                <SidebarNavigation/>
+               <Flex>
                {children}
+               </Flex>
+               
             </Flex> 
           
    </Box>
