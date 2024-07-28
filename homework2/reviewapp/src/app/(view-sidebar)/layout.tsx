@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { SidebarNavigation } from "@/components/shared/SidebarNavigation/SidebarNavigation";
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { Providers } from "../providers";
+import { Header } from "@/components/shared/Header/Header";
 
 export default function RootLayout({
   children,
@@ -11,18 +12,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Providers> 
+   <Box>
+    <Flex textColor="white" flexDirection={{base:"column",lg:"row"}}>
+               <SidebarNavigation/>
+               <Flex>
+               {children}
+               </Flex>
+               
+            </Flex> 
           
-        <Flex  
-            textColor="white"
-            bg="#2a0066">
-            <SidebarNavigation/>
-           {children}
-          </Flex> 
-          </Providers>
-      </body>
-    </html>
+   </Box>
+          
   );
 }

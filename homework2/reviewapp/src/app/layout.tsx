@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ backgroundColor: '#2a0066' }}>
+      <body className={inter.className} style={{ backgroundColor: '#1B004C' }}>
         <Providers> 
           
         <Flex  

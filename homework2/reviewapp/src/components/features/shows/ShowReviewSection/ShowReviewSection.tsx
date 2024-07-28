@@ -2,13 +2,14 @@
 import { IReview, IReviewList } from "@/typings/review";
 import { IReviewFormProps, ReviewForm } from "../ReviewForm/ReviewForm";
 import { Fragment } from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { ReviewList } from "../../review/ReviewList/ReviewList";
 import useSWR, { mutate } from "swr";
 import { swrKeys } from "@/fetchers/swrKeys";
 import { createReview } from "@/fetchers/review";
 import { authFetcher } from "@/fetchers/fetcher";
 import useSWRMutation from "swr/mutation";
+import { fontSize } from "@/styles/theme/foundations/font";
 
 
 
@@ -36,11 +37,20 @@ export const ShowReviewSection=({id}:ShowReviewSectionProps)=>{
  }  
     return(
         <Fragment>
-            <Heading size="lg" marginBottom={5} textColor="white">
+            <Flex direction="row"  marginTop={20}  width={{ md:"75%",lg: "80%" ,sm:"70%"}} >
+                <Heading marginRight={{base:40,lg:20,sm:5}} fontSize={{base:fontSize.huge,lg:fontSize.huge,sm:fontSize.xl}} marginBottom={5} textColor="white">
                 Reviews
-            </Heading>
-            <ReviewForm index={id} onAddReview={addReview}/>
-            <ReviewList reviewList={data.reviews} />
+                </Heading>
+                {/* width="870px"  */}
+                <Flex  direction="column"  width={{ md:"75%",lg: "80%" ,sm:"70%"}}>
+                <ReviewForm index={id} onAddReview={addReview}/>
+                <ReviewList reviewList={data.reviews} />
+                </Flex>
+               
+            </Flex>
+            
+            
+            
         </Fragment>
     );
     
