@@ -29,6 +29,16 @@ const Card = defineMultiStyleConfig({
                 paddingLeft:"15px",
                
             }
+        },
+        xs:{
+            container:{
+                overflow:"hidden",
+               
+                borderRadius:"24px",
+            },
+            body:{
+                padding: "10px",
+            }
         }
     },
     variants:{

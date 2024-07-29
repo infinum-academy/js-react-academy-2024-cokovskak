@@ -17,7 +17,7 @@ export default function MyProfile() {
   return (
     <>
       <AuthRedirect to="/login" isLogged={false}/>
-      <Flex gap={30} flexDirection="column" padding={30} >
+      <Flex height="100%"gap={30} flexDirection="column" padding={30} backgroundColor={"purple.300"} >
             <Heading  as='h2' >My profile</Heading>
             <Text>Email:
             {data?.user?.email}

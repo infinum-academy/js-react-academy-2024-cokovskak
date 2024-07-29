@@ -23,7 +23,7 @@ export const ReviewItem = ({ review }: IReviewItemProps) => {
 			
 			<Flex direction="row" alignItems="start" >
 				<Avatar  size={{sm:'2xs',md:'sm',lg:'md'}}   name={review.user?.email} marginRight={5}/>
-                {/* width={{base:"200px",lg:"200px",sm:"50px"}} */}
+             
 			<Flex flexDirection="column" alignItems="start"  width={{base:"80%",lg:"80%",sm:"70%"}}>
 				<Text data-testid="email"  marginBottom={4}>{review.user?.email}</Text>
 				<Flex flexDirection="row" gap={3}>

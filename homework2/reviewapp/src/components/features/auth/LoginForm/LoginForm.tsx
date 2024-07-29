@@ -46,7 +46,7 @@ interface ILoginFormInput {
        padding="20px"
        gap="30px"       position= "relative"   >
           <Flex   marginTop={10} >
-         <Image width="199.06px" height="31.73px" src="/assets/images/logo.png"/>
+         <Image width="200px" height="32px" src="/assets/images/logo.png"/>
          </Flex>
           <chakra.form width="80%" onSubmit={handleSubmit(onLogin)}>
             

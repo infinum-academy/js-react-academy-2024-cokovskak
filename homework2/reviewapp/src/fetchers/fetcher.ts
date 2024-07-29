@@ -36,6 +36,7 @@ export async function authFetcher <T> (input: string | URL | globalThis.Request,
           data = await response.json();
       }
    } catch (error) {
+      console.error(`Auth fetcher error: ${error}`);
       throw error;
    }
    return data;

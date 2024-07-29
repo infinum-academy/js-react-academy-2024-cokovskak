@@ -1,4 +1,5 @@
 'use client'
+import { Stepper } from "@/components/features/stepper/Stepper/Stepper";
 import { swrKeys } from "@/fetchers/swrKeys";
 import { fontSize } from "@/styles/theme/foundations/font";
 import { Button, Flex,Heading,Text } from "@chakra-ui/react";
@@ -27,8 +28,8 @@ return (
     My profile
   </Button>
   
-
-  <Button onClick={onLogout} variant="navbar"    fontSize="medium"  >
+  <Stepper/>
+  <Button onClick={onLogout} variant="navbar" fontSize="medium"  >
     Log out
   </Button>
 </>
