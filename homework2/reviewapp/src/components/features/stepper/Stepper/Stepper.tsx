@@ -8,7 +8,7 @@ export const Stepper=()=>{
     const{isOpen,onOpen,onClose}=useDisclosure();
     return(
 
-     <Flex>
+     <Flex marginLeft={{sm:"36px", lg:"0px"}}>
         <Button onClick={onOpen} variant="navbar" size={{base:"md",lg:"md",sm:"sm"}}>Show Picker</Button>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay/>

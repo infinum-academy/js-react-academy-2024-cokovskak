@@ -7,6 +7,7 @@ export const StepperStep=()=>{
     const currentShows=[];
     const total=showsList.length;
     const subShows=totalSteps;
+    
     for(let i=0;i<total;i+=subShows){
         const arr=showsList.slice(i,i+subShows);
         currentShows.push(arr);

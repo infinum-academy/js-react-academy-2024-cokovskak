@@ -8,7 +8,7 @@ export interface IReviewItemProps {
 }
 
 export const ReviewMenuButton = ({review} : IReviewItemProps) => {
-   return <>
+   return (
       <Menu>
          <MenuButton>⋮</MenuButton>
          <MenuList minW={0} width="100px" fontSize={4} padding={1}>
@@ -20,5 +20,5 @@ export const ReviewMenuButton = ({review} : IReviewItemProps) => {
             </MenuItem>
          </MenuList>
       </Menu>
-   </>
+   );
 };

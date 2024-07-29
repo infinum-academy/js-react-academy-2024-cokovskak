@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { StepperContext } from "./StepperContextProvider"
 import { StepperResults } from "./StepperResults";
 import { StepperStep } from "./StepperStep";
+import { StepperContext } from "./StepperContextProvider";
 export const StepperSteps = () => {
-    const { currentStep, totalSteps } = useContext(StepperContext);
+    const { currentStep, totalSteps} = useContext(StepperContext);
+   
 
     
     if(currentStep < totalSteps) {
