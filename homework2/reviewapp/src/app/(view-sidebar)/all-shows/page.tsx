@@ -7,7 +7,7 @@ export default function AllShows(){
    
         return (
                 <>
-                {/* <AuthRedirect to="/login" isLogged={false}/> */}
+                <AuthRedirect to="/login" isLogged={false}/>
                 <ShowsListSection />
                 </>
          );

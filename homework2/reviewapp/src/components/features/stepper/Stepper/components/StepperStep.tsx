@@ -39,7 +39,7 @@ export const StepperStep=()=>{
                <Card   variant="primary" size="sm" width="170px"                            
              borderWidth={show.id === selectedShowId ? "3px" : "0"} borderColor={show.id === selectedShowId ? "red.400" : "transparent"} 
  >
-                       <Image alt={show.title} height="150px" width="10px" src = {show.image_url ? show.image_url : '/images/noImage.jpeg'} data-testid = "details-image" />
+                       <Image alt={show.title} height="150px" width="170px" src = {show.image_url ? show.image_url : '/images/noImage.jpeg'} data-testid = "details-image" />
                       
                       <CardBody alignItems="center"color="purple.200" justifyContent="space-between"  >
                       <Button fontSize={fontSize.sm}onClick={()=>handleShowClick(show)}>{show.title}</Button>

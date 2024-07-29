@@ -10,9 +10,9 @@ export const SidebarContent=()=>{
   const pathname=usePathname();
   const to=useRouter();
   const onLogout=()=>{
-  //   localStorage.removeItem('loginInfo');
-  //   mutate(swrKeys.user,null,{revalidate: false});
-  //  to.push('/');
+    localStorage.removeItem('loginInfo');
+    mutate(swrKeys.user,null,{revalidate: false});
+   to.push('/');
   }
 return (
   <>
