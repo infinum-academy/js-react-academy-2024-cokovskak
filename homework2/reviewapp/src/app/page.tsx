@@ -9,8 +9,8 @@ import { AuthRedirect } from '@/components/shared/AuthRedirect/AuthRedirect';
 export default function Home() {
   return(
   <>
-  <AuthRedirect to="/login" isLogged={false} />
-  <AuthRedirect to="/all-shows" isLogged={true} />
+  {/* <AuthRedirect to="/login" isLogged={false} />
+  <AuthRedirect to="/all-shows" isLogged={true} /> */}
 </>
   );
 }

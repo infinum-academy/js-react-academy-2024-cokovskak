@@ -15,7 +15,8 @@ interface IStepperContext {
     selectedShowsList: IShow[];
     setSelectedShows: (newShowsList: IShow[]) => void;
     totalSteps: number;
-
+    selectedShowId: string;
+    setSelectedShowId:(newShowId:string)=>void;
 
 }
 
@@ -28,9 +29,10 @@ export const StepperContext = createContext<IStepperContext>({} as IStepperConte
 export  const StepperContextProvider=({children}: IStepperContextProvider)=>{
     const [currentStep,setCurrentStep]=useState(0);
     const [selectedShowsList,setSelectedShows]=useState<IShow[]>([]);
+    const [selectedShowId,setSelectedShowId]=useState("");
 	const { data } = useSWR(swrKeys.all_shows, authFetcher<IListShows>);
     const showsList=data?.shows;
-    const [totalSteps]=useState(5);
+    const [totalSteps]=useState(4);
     useEffect(() => {
         console.log("currentStep in provider:", currentStep);
         console.log("totalSteps in provider:", totalSteps);
@@ -46,7 +48,10 @@ export  const StepperContextProvider=({children}: IStepperContextProvider)=>{
             showsList,
             selectedShowsList,
             setSelectedShows,
-            totalSteps
+            totalSteps,
+            selectedShowId,
+            setSelectedShowId
+            
         }}>
             {children}
         </StepperContext.Provider>

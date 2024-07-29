@@ -11,8 +11,8 @@ export const ShowCard=({show}:IShowCardProps)=>{
   return (
 
     <Card  as={NextLink} 
-    href={`/all-shows/${show.id}`}  variant="primary" size="sm" width="240px">
-             <Image alt={show.title} height="300px" width="240px" src = {show.image_url ? show.image_url : '/images/noImage.jpeg'} data-testid = "details-image" />
+    href={`/all-shows/${show.id}`}  variant="primary" size="sm" width="100%">
+             <Image alt={show.title} height="300px" width="100%" src = {show.image_url ? show.image_url : '/images/noImage.jpeg'} data-testid = "details-image" />
             
             <CardBody color="purple.200">
                <Text fontWeight="bold"  marginBottom={4} data-testid = "title"> {show.title} </Text>

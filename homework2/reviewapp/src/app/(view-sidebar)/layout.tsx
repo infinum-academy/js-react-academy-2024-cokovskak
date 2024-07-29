@@ -12,10 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-   <Box>
-    <Flex textColor="white" flexDirection={{base:"column",lg:"row"}}>
+   <Box width="100%" backgroundColor={"purple.300"}>
+    <Flex textColor="white" width="100%" flexDirection={{base:"column",lg:"row"}}>
                <SidebarNavigation/>
-               <Flex>
+               <Flex width="100%" >
                {children}
                </Flex>
                

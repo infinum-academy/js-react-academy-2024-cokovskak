@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import { SidebarNavigation } from "@/components/shared/SidebarNavigation/SidebarNavigation";
 import { Flex } from "@chakra-ui/react";
+import theme from "@/styles/theme/theme";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,11 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ backgroundColor: '#1B004C' }}>
+      <body className={inter.className} style={{ backgroundColor: theme.colors.purple[300] }}>
         <Providers> 
           
-        <Flex  
-            textColor="white"
+        <Flex   width="100%"
+            textColor="white" backgroundColor="purple.300"
             >
            {children}
           </Flex> 

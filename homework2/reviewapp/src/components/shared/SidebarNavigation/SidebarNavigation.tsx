@@ -14,12 +14,12 @@ return (
   <Flex direction={"column"} >
     <Flex direction={"row"} padding={10}  alignItems="center"justifyContent="space-between" >
     <Header/>
-    <Hide above='md'>
+    <Hide above='xl'>
      <SidebarNavigationMobile/>
    </Hide>
     </Flex>
-   
-    <Show above='md'>
+  
+    <Show above='xl'>
       <SidebarNavigationDesktop/>
     </Show>
    

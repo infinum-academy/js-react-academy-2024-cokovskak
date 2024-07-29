@@ -10,9 +10,9 @@ export const SidebarContent=()=>{
   const pathname=usePathname();
   const to=useRouter();
   const onLogout=()=>{
-    localStorage.removeItem('loginInfo');
-    mutate(swrKeys.user,null,{revalidate: false});
-   to.push('/');
+  //   localStorage.removeItem('loginInfo');
+  //   mutate(swrKeys.user,null,{revalidate: false});
+  //  to.push('/');
   }
 return (
   <>
@@ -27,8 +27,9 @@ return (
   <Button  as={NextLink} href="/my-profile" variant="navbar" isActive={pathname === "/my-profile"} >
     My profile
   </Button>
+  
   <Stepper/>
-  <Button onClick={onLogout} variant="navbar"    fontSize="medium"  >
+  <Button onClick={onLogout} variant="navbar" fontSize="medium"  >
     Log out
   </Button>
 </>

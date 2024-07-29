@@ -12,15 +12,15 @@ export const Stepper=()=>{
         <Button onClick={onOpen} variant="navbar" size={{base:"md",lg:"md",sm:"sm"}}>Show Picker</Button>
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay/>
-            <ModalContent>
-                <ModalHeader>Choose a TV show</ModalHeader>
-                <ModalBody>
+            <ModalContent  backgroundColor="purple.300"alignItems="center" textColor="white">
+                <ModalHeader >TV shows picker</ModalHeader>
+                <ModalBody >
                     
                 <StepperSteps />
                 </ModalBody>
                 <ModalFooter>
                 <StepperProgressBar/>
-                <StepperButtons/>
+                <StepperButtons onClose={onClose}/>
                 </ModalFooter>
             </ModalContent>
            
